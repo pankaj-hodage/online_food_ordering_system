@@ -6,6 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,8 +29,11 @@ import lombok.ToString;
 @Table(name = "payment")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Payment extends BaseEntity {
+public class Payment  {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private double ammount;
 	@Enumerated(EnumType.STRING)
 	private Status status;
@@ -34,6 +43,9 @@ public class Payment extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "payment_mode")
 	private PaymentModes payment_mode;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "order_id",nullable = false)
+	private FoodOrder orderId;
 	
 	
 	
