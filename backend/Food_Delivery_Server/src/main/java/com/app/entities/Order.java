@@ -27,7 +27,7 @@ public class Order extends BaseEntity
 {
 	@Enumerated(EnumType.STRING)
 	@Column(length=25)
-	OrderStatus status;
+	private OrderStatus status;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	@Column(name="order_time")

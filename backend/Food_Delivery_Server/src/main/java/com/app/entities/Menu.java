@@ -2,6 +2,9 @@ package com.app.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -14,16 +17,22 @@ import lombok.ToString;
 @Table(name = "menu")
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"restaurantId","categoryId"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Menu extends BaseEntity 
 {	
-	@Column(name = "product_name" ,length =20)
-	String productName;
+	@Column(name = "product_name" ,length =20,unique = true)
+	private String productName;
 	@Column(length =100)
-	String description;
+	private String description;
 	double price;
 	@Column(length =100)
-	String image;
+	private String image;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "rest_id",nullable = false)
+	private User restaurantId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cat_id",nullable = false)
+	private Category categoryId;
 }

@@ -17,8 +17,8 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Catagory extends BaseEntity 
+public class Category extends BaseEntity 
 {
-	@Column(length =20)
+	@Column(length =20,unique = true)
 	String name;
 }
