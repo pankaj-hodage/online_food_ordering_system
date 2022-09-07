@@ -14,10 +14,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString(exclude = {"selectedCustomer","selectedRestaurant"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "rating")
@@ -33,9 +35,9 @@ public class Rating   {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "rest_id", nullable = false)
-	private User restaurantId;
+	private User selectedRestaurant;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id", nullable = false)
-	private User customerId;
+	private User selectedCustomer;
 
 }

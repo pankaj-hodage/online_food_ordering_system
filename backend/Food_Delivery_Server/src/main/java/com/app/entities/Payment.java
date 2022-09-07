@@ -25,7 +25,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "currentOrder")
 @Table(name = "payment")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -47,7 +47,7 @@ public class Payment  {
 	private PaymentModes payment_mode;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id",nullable = false)
-	private FoodOrder orderId;
+	private FoodOrder currentOrder;
 	
 	
 	

@@ -37,14 +37,14 @@ public class FoodOrder {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id",nullable = false)
-	private User customerId;
+	private User customer;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "deliveryboy_id",nullable = false)
-	private User deliverboyId;
+	private User deliverboy;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "address_id",nullable = false)
-	private Address addressId;
+	private Address address;
 	
 }

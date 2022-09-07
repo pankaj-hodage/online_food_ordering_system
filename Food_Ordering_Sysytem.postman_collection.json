@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "6d6d3e35-832a-4a4d-8b4e-3be58e454671",
+		"name": "Food_Ordering_Sysytem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21192820"
+	},
+	"item": [
+		{
+			"name": "SignIn",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \r\n    \"email\": \"rohit@gmail.com\",\r\n    \"password\": \"kalpesh@123\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/FoodOrderingSystem/user/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FoodOrderingSystem",
+						"user",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"name\": \"kalpesh\",\r\n    \"email\": \"kalpesh@gmail.com\",\r\n    \"contact\": \"9921261375\",\r\n    \"password\": \"kalpesh@123\",\r\n    \"role\": \"CUSTOMER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/FoodOrderingSystem/user/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FoodOrderingSystem",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

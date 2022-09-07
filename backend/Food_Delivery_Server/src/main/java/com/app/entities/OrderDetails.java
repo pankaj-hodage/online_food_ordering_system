@@ -20,7 +20,7 @@ import lombok.ToString;
 @Table(name = "order_details")
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"orderId","selectedProduct"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDetails {
@@ -38,6 +38,6 @@ public class OrderDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", nullable = false)
-	private Menu productId;
+	private Menu selectedProduct;
 
 }

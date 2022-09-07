@@ -26,7 +26,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "userid")
+@ToString(exclude = "selectedUser")
 public class Address 
 {
 	@Id
