@@ -24,7 +24,7 @@ public class FoodOrder {
 	private Integer id;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(length=25)
+	@Column(length=25,name = "status")
 	private OrderStatus status;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")

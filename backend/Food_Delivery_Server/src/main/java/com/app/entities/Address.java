@@ -38,14 +38,15 @@ public class Address
 	private String line2;
 	@Column(name = "contact_no",length =15)
 	private String contactNo;
+	@Column(name = "pincode")
 	private int pincode;
-	@Column(length =20)
+	@Column(length =20,name = "city")
 	private String city;
-	@Column(length =20)
+	@Column(length =20,name = "state")
 	private String State;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id",nullable = false)
-	private User userid;
+	private User selectedUser;
 	
 	
 }

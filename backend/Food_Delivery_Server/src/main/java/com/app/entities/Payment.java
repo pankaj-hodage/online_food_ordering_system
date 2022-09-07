@@ -34,8 +34,10 @@ public class Payment  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "ammount")
 	private double ammount;
 	@Enumerated(EnumType.STRING)
+	@Column(name = "status")
 	private Status status;
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	@Column(name="order_dateTime")

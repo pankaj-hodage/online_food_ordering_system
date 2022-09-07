@@ -27,8 +27,9 @@ public class OrderDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "quantity")
 	private int quantity;
-
+	@Column(name = "total")
 	private double total;
 
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -1,5 +1,6 @@
 package com.app.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,9 @@ public class Rating   {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "rating")
 	private int rating;
+	@Column(name = "comment")
 	private String comment;
 
 	@ManyToOne(fetch = FetchType.LAZY)
