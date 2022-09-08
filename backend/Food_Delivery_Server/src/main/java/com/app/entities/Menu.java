@@ -28,14 +28,22 @@ public class Menu
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(name = "product_name" ,length =20,unique = true)
 	private String productName;
+	
 	@Column(length =100,name = "description")
 	private String description;
+	
 	@Column(name = "price")
 	double price;
+	
 	@Column(length =100,name = "image")
 	private String image;
+	
+	@Column(name="status")
+	private byte status;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "rest_id",nullable = false)
 	private User restaurant;
