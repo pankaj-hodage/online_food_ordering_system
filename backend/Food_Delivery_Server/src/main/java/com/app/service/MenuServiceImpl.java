@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.MenuRepository;
+import com.app.dto.MenuDto;
 import com.app.entities.Menu;
 
 
@@ -27,6 +29,24 @@ public class MenuServiceImpl implements IMenuService
 		
 		return menuRepo.save(menu);
 	}
+
+	@Override
+	public Menu editMenu(MenuDto menuDto, int id) {
+		Menu menu = getMenuDetails(id);
+		menu.setDescription(menuDto.getDescription());
+		menu.setPrice(menuDto.getPrice());
+		return menuRepo.save(menu);
+	}
 	
+	public Menu getMenuDetails(int id)
+	{
+		return menuRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Menu Not Found !!!"));
+	}
+
+	@Override
+	public String deleteMenu(int id) {
+		menuRepo.deleteById(id);
+		return "Menu Deleted successfully";
+	}
 	
 }
