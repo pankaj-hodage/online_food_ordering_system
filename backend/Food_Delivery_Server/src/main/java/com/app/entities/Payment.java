@@ -25,7 +25,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "currentOrder")
 @Table(name = "payment")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,10 +35,12 @@ public class Payment  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name = "ammount")
 	private double ammount;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(length =30)
+	
+	@Column(name = "status", length=25)
 	private Status status;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
@@ -51,7 +53,7 @@ public class Payment  {
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id",nullable = false)
-	private FoodOrder orderId;
+	private FoodOrder currentOrder;
 	
 	
 	

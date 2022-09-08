@@ -20,7 +20,7 @@ import lombok.ToString;
 @Table(name = "menu")
 @Getter
 @Setter
-@ToString(exclude = {"restaurantId","categoryId"})
+@ToString(exclude = {"restaurant","category"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Menu
@@ -30,15 +30,16 @@ public class Menu
 	private Integer id;
 	@Column(name = "product_name" ,length =20,unique = true)
 	private String productName;
-	@Column(length =100)
+	@Column(length =100,name = "description")
 	private String description;
+	@Column(name = "price")
 	double price;
-	@Column(length =100)
+	@Column(length =100,name = "image")
 	private String image;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "rest_id",nullable = false)
-	private User restaurantId;
+	private User restaurant;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cat_id",nullable = false)
-	private Category categoryId;
+	private Category category;
 }

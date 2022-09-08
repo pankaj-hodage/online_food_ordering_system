@@ -20,15 +20,16 @@ import lombok.ToString;
 @Table(name = "order_details")
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"orderId","selectedProduct"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "quantity")
 	private int quantity;
-
+	@Column(name = "total")
 	private double total;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -37,6 +38,6 @@ public class OrderDetails {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", nullable = false)
-	private Menu productId;
+	private Menu selectedProduct;
 
 }

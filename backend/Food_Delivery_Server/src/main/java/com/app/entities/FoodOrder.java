@@ -24,7 +24,7 @@ public class FoodOrder {
 	private Integer id;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(length=25)
+	@Column(length=25,name = "status")
 	private OrderStatus status;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
@@ -37,14 +37,14 @@ public class FoodOrder {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id",nullable = false)
-	private User customerId;
+	private User customer;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "deliveryboy_id",nullable = false)
-	private User deliverboyId;
+	private User deliverboy;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "address_id",nullable = false)
-	private Address addressId;
+	private Address address;
 	
 }
