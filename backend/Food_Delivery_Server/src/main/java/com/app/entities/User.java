@@ -27,14 +27,19 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(length = 30)
 	private String name;
+	
 	@Column(unique = true,length = 30)
 	private String email;
+	
 	@Column(name = "contat_no",length = 13)
 	private String contact;
-
+	
+	@Column(length = 50)
 	private String password;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
 	private Role role;

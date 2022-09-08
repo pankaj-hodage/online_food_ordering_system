@@ -34,15 +34,21 @@ public class Payment  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	private double ammount;
+	
 	@Enumerated(EnumType.STRING)
+	@Column(length =30)
 	private Status status;
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	@Column(name="order_dateTime")
 	private LocalDateTime orderDate;
+	
 	@Enumerated(EnumType.STRING)
-	@Column(name = "payment_mode")
+	@Column(name = "payment_mode", length=20)
 	private PaymentModes payment_mode;
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id",nullable = false)
 	private FoodOrder orderId;
