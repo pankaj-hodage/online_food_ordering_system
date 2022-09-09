@@ -16,4 +16,6 @@ public interface ICartService
 	Optional<Cart> findById(Integer cartId);
 
 	void deleteAllFromCart(int userId);
+
+	String updateQuantity(Integer cartId, Integer quantity);
 }

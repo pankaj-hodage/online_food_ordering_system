@@ -57,4 +57,12 @@ public class CartServiceImpl implements ICartService {
 	public void deleteAllFromCart(int userId) {
 		cartRepo.deleteAll(cartRepo.findAllItemsByUser(userId));
 	}
+	
+	@Override
+	public String updateQuantity(Integer cartId, Integer quantity) {
+		Cart cartItem = cartRepo.findById(cartId).get();
+		cartItem.setQuantity(quantity);
+		
+		return "success";
+	}
 }

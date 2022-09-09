@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,5 +63,13 @@ public class CartController
 			cartService.deleteAllFromCart(userId);
 			return new ResponseEntity<>(new ResponseDto<>("success","Cart destroyed for user with userId: "+userId),HttpStatus.OK);
 		}		
-	
+		// Update Quantity
+		@PutMapping("/update")
+		public ResponseEntity<?> updateQuantity(@RequestBody HashMap<String, Integer> map) {
+			Integer cartId = map.get("cartId");
+			Integer quantity = map.get("quantity");
+			String message = cartService.updateQuantity(cartId, quantity);
+			Cart updatedCart = cartService.findById(cartId).get();
+			return new ResponseEntity<>(new ResponseDto<>(message, updatedCart), HttpStatus.ACCEPTED);
+		}
 }
