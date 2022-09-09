@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +49,12 @@ public class MenuServiceImpl implements IMenuService
 	public String deleteMenu(int id) {
 		menuRepo.deleteById(id);
 		return "Menu Deleted successfully";
+	}
+
+	@Override
+	public List<Menu> findAll() {
+		
+		return menuRepo.findAll();
 	}
 	
 }

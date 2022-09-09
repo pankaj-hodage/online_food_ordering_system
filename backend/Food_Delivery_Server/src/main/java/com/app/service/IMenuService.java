@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.MenuDto;
@@ -12,4 +14,6 @@ public interface IMenuService
 	Menu editMenu(MenuDto menuDto, int id);
 	
 	String deleteMenu(int id);
+	
+	public List<Menu> findAll();
 }

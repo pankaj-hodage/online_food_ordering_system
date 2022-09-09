@@ -1,11 +1,15 @@
 package com.app.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,9 +29,9 @@ import com.app.service.ImageServiceImpl;
 import com.app.service.MenuServiceImpl;
 
 @RestController
-@RequestMapping("/resto")
+@RequestMapping("/menu")
 @CrossOrigin
-public class RestaurentController 
+public class MenuController 
 {
 	@Autowired
 	MenuServiceImpl menuService;
@@ -39,7 +43,7 @@ public class RestaurentController
 	@Autowired
 	CategoryRepository catRepo;
 	
-	@PostMapping("/addMenu")
+	@PostMapping("/add")
 	public ResponseEntity<?> save( AddMenuDto dto)
 	{
 		
@@ -70,5 +74,10 @@ public class RestaurentController
 		String message = menuService.deleteMenu(id);
 		return new ResponseEntity<>(new ResponseDto<>("success", message),HttpStatus.CREATED);
 	}
-	
+	@GetMapping("/allMenus")
+	public ResponseEntity<?> findAllMenu() 
+	{
+		List<Menu> list = menuService.findAll();
+		return ResponseDto.success(list);
+	}
 }
