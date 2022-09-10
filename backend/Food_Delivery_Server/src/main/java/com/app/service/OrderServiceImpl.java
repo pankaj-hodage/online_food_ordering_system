@@ -132,14 +132,14 @@ public class OrderServiceImpl implements IOrderService {
 		return response;
 	}
 
-	@Override
-	public void assignDeliveryBoy(int userId, int orderId) {
-		FoodOrder order = foodOrderRepo.findById(orderId).get();
-		User user = userRepo.findById(userId).get();
-		order.setDeliverboy(user);
-		order.setStatus(OrderStatus.OUT_FOR_DELIVERY);
-
-	}
+//	@Override
+//	public void assignDeliveryBoy(int userId, int orderId) {
+//		FoodOrder order = foodOrderRepo.findById(orderId).get();
+//		User user = userRepo.findById(userId).get();
+//		order.setDeliverboy(user);
+//		order.setStatus(OrderStatus.OUT_FOR_DELIVERY);
+//
+//	}
 
 	@Override
 	public void updateOrderStatus(int orderId, String status, int deliveryId) {

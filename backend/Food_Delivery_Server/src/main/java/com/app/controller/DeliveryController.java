@@ -1,25 +1,37 @@
-//package com.app.controller;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.web.bind.annotation.CrossOrigin;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//import com.app.service.OrderServiceImpl;
-//
-//@RestController
-//@RequestMapping("/delivery")
-//@CrossOrigin
-//public class DeliveryController 
-//{
-//	@Autowired
-//	OrderServiceImpl OrderService;
-//	
-//	@GetMapping("/allOrders")
-//	public ResponseEntity<?> getAllOrders()
-//	{
-//		return ResponseEntity.ok().body(OrderService.getAllPlacedOrders());
-//	}
-//}
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dto.ResponseDto;
+import com.app.service.DeliveryServiceImpl;
+import com.app.service.OrderServiceImpl;
+
+@RestController
+@RequestMapping("/delivery")
+@CrossOrigin
+public class DeliveryController 
+{
+	@Autowired
+	DeliveryServiceImpl deliveryService;
+	
+	@GetMapping("/placedOrders")
+	public ResponseEntity<?> getAllOrders()
+	{
+		return ResponseEntity.ok().body(deliveryService.allPlacedOrders());
+	}
+	
+	@PutMapping("/assign/{userId}")
+	public ResponseEntity<?> assignDeliveryBoy(@RequestBody int orderId , @PathVariable int userId){
+		deliveryService.assignDeliveryBoy(userId,orderId);
+		return new ResponseEntity<>(new ResponseDto<>("success","Order Assigned Successfully!!"),HttpStatus.OK);
+	}
+}
