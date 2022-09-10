@@ -46,11 +46,11 @@ public class Menu
 	@Column(name="status")
 	private byte status;
 	//@JsonIgnore
-	@ManyToOne //(fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name = "rest_id",nullable = false)
 	private User restaurant;
 	//@JsonIgnore
-	@ManyToOne //(fetch = FetchType.LAZY)
+	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name = "cat_id",nullable = false)
 	private Category category;
 }

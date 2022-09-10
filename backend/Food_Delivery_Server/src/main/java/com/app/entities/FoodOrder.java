@@ -16,8 +16,19 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @Entity
 @Table(name = "food_order")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString(exclude = {"customer","deliverboy","address"})
 public class FoodOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
