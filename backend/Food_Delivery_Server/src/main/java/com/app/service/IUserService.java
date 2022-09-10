@@ -15,4 +15,6 @@ public interface IUserService {
 	User getUserDetails(Integer id);
 	String deleteUser(Integer id);
 	List<User> getAllUser();
+
+
 }

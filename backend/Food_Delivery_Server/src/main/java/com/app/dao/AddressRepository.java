@@ -1,6 +1,7 @@
 package com.app.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,5 +14,5 @@ public interface AddressRepository extends JpaRepository<Address, Integer>{
 	List<Address> getAllAddressesByUserId(Integer Id);
 	
 	@Query("Select a from Address a where a.id=?1")
-	Address findbyId(Integer addressId);
+	Optional<Address> findbyId(Integer addressId);
 }
