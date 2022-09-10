@@ -28,7 +28,7 @@ import lombok.ToString;
 @ToString(exclude = "currentOrder")
 @Table(name = "payment")
 @NoArgsConstructor
-@AllArgsConstructor
+
 public class Payment  {
 
 	@Id
@@ -41,7 +41,7 @@ public class Payment  {
 	@Enumerated(EnumType.STRING)
 	
 	@Column(name = "status", length=25)
-	private Status status;
+	private PaymentStatus paymentStatus;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	@Column(name="order_dateTime")
@@ -54,6 +54,16 @@ public class Payment  {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id",nullable = false)
 	private FoodOrder currentOrder;
+
+	public Payment(double ammount, PaymentStatus paymentStatus, LocalDateTime orderDate, PaymentModes payment_mode,
+			FoodOrder currentOrder) {
+		super();
+		this.ammount = ammount;
+		this.paymentStatus = paymentStatus;
+		this.orderDate = orderDate;
+		this.payment_mode = payment_mode;
+		this.currentOrder = currentOrder;
+	}
 	
 	
 	

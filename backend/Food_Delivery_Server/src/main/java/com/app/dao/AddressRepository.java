@@ -14,5 +14,5 @@ public interface AddressRepository extends JpaRepository<Address, Integer>{
 	List<Address> getAllAddressesByUserId(Integer Id);
 	
 	@Query("Select a from Address a where a.id=?1")
-	Optional<Address> findbyId(Integer addressId);
+	Address findbyId(Integer addressId);
 }
