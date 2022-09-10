@@ -39,4 +39,11 @@ public class Cart {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id",nullable = false)
 	private User currentUser;
+	
+	public Cart(int quantity, Menu selectedMenu, User currentUser) {
+		super();
+		this.quantity = quantity;
+		this.selectedMenu = selectedMenu;
+		this.currentUser = currentUser;
+	}
 }

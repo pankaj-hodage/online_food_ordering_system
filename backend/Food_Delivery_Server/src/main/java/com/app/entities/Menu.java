@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +22,7 @@ import lombok.ToString;
 @Table(name = "menu")
 @Getter
 @Setter
-@ToString(exclude = {"restaurantId","categoryId"})
+@ToString(exclude = {"restaurant","category"})
 @NoArgsConstructor
 @AllArgsConstructor
 public class Menu
@@ -28,18 +30,29 @@ public class Menu
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@Column(name = "product_name" ,length =20,unique = true)
 	private String productName;
+	
 	@Column(length =100,name = "description")
 	private String description;
+	
 	@Column(name = "price")
 	double price;
+	
 	@Column(length =100,name = "image")
 	private String image;
-	@ManyToOne(fetch = FetchType.LAZY)
+	
+	@Column(name="status")
+	private byte status;
+	//@JsonIgnore
+	@ManyToOne (fetch = FetchType.LAZY)
 	@JoinColumn(name = "rest_id",nullable = false)
-	private User restaurantId;
-	@ManyToOne(fetch = FetchType.LAZY)
+	private User restaurant;
+	//@JsonIgnore
+
+	@ManyToOne//(fetch = FetchType.LAZY)
+
 	@JoinColumn(name = "cat_id",nullable = false)
-	private Category categoryId;
+	private Category category;
 }

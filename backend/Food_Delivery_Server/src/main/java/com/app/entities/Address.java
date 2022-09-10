@@ -2,6 +2,8 @@ package com.app.entities;
 
 
 
+import java.util.Optional;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,7 +28,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "userid")
+@ToString(exclude = "selectedUser")
 public class Address 
 {
 	@Id
@@ -43,7 +45,7 @@ public class Address
 	@Column(length =20,name = "city")
 	private String city;
 	@Column(length =20,name = "state")
-	private String State;
+	private String state;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id",nullable = false)
 	private User selectedUser;

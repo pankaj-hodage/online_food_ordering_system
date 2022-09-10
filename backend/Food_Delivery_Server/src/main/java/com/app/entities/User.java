@@ -18,7 +18,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "password")
 @Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,7 +27,9 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(length = 30,name = "name")
+	
+	
+	@Column(length = 50,name = "name")
 	private String name;
 	@Column(unique = true,length = 30,name = "email")
 	private String email;
@@ -35,6 +37,7 @@ public class User {
 	private String contact;
 	@Column(name = "password")
 	private String password;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20,name = "role")
 	private Role role;

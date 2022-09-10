@@ -27,7 +27,7 @@ public class RatingServiceImpl implements IRatingService{
 	@Override
 	public Rating addRating(Rating rating, int userId) {
 		User user = userDao.findById(userId).orElseThrow(()-> new ResourceNotFoundException("Invalid Credentials !!"));
-		rating.setCustomerId(user);
+		rating.setSelectedCustomer(user);
 		return ratingDao.save(rating);
 
 	}
