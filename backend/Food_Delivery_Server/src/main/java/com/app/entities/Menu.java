@@ -50,7 +50,7 @@ public class Menu
 	@JoinColumn(name = "rest_id",nullable = false)
 	private User restaurant;
 	//@JsonIgnore
-	@ManyToOne //(fetch = FetchType.LAZY)
+	@ManyToOne//(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cat_id",nullable = false)
 	private Category category;
 }

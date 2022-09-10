@@ -32,11 +32,11 @@ public class Cart {
 	@Column(name = "quantity")
 	private int quantity;
 
-	@ManyToOne//(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "menu_id",nullable = false)
 	private Menu selectedMenu;
 
-	@OneToOne//(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id",nullable = false)
 	private User currentUser;
 	

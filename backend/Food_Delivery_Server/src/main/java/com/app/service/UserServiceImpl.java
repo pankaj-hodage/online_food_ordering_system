@@ -18,6 +18,7 @@ import com.app.entities.User;
 @Transactional
 public class UserServiceImpl implements IUserService {
 
+
 	@Autowired
 	private UserRepository userRepo;
 
@@ -72,7 +73,5 @@ public class UserServiceImpl implements IUserService {
 		return userRepo.findAll();
 	}
 
-	
-	
 
 }

@@ -7,6 +7,271 @@
 	},
 	"item": [
 		{
+			"name": "menu Copy",
+			"item": [
+				{
+					"name": "AddMenu",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageName",
+									"contentType": "",
+									"type": "file",
+									"src": "/C:/Users/PANKAJ HODAGE/Downloads/vadapav.jpg"
+								},
+								{
+									"key": "menuName",
+									"value": "misal",
+									"contentType": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "tasty",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "restaurent",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "catagory",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/menu/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu/allMenus",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu",
+								"allMenus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editMenu",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\" : \"15\",\r\n\r\n    \"description\" : \"Delicious\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/menu/edit/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu",
+								"edit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMenu",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/menu/delete/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"menu",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart Copy",
+			"item": [
+				{
+					"name": "addtocart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"menuId\" : \"2\",\r\n    \"userId\" : \"1\",\r\n    \"quantity\" : \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/cart/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gellAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/cart/all/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart",
+								"all",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteItem",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/cart/delete/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteALLCart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/cart/delete/all/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart",
+								"delete",
+								"all",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateQuantity",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"cartId\" : \"3\",\r\n        \"quantity\" : \"8\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/cart/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"cart",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delivery Copy",
+			"item": [
+				{
+					"name": "allOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/delivery/allOrders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"delivery",
+								"allOrders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "SignIn",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -16,7 +281,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n      \r\n    \"email\": \"rohit@gmail.com\",\r\n    \"password\": \"kalpesh@123\"\r\n    \r\n}",
+					"raw": "{\r\n      \r\n    \"email\": \"pankaj@gmail.com\",\r\n    \"password\": \"pankaj@123\"\r\n    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,6 +329,93 @@
 						"FoodOrderingSystem",
 						"user",
 						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add_address",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"line1\":\"yashwant Nagar\",\r\n    \"line2\":\"Nashik\",\r\n    \"contactNo\":\"7057750847\",\r\n    \"pincode\":\"4220103\",\r\n    \"city\":\"sinnar\",\r\n    \"state\":\"Mh\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/FoodOrderingSystem/address/add/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FoodOrderingSystem",
+						"address",
+						"add",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_Address",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/FoodOrderingSystem/address/delete/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FoodOrderingSystem",
+						"address",
+						"delete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll_Address_byUserId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"line1\":\"sanjivani Nagar\",\r\n    \"line2\":\"pangri\",\r\n    \"contactNo\":\"7057750847\",\r\n    \"pincode\":\"4220103\",\r\n    \"city\":\"Sinnar\",\r\n    \"state\":\"Maharashtra\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/FoodOrderingSystem/address/show/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"FoodOrderingSystem",
+						"address",
+						"show",
+						"1"
 					]
 				}
 			},
