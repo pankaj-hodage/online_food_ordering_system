@@ -38,4 +38,12 @@ public class DeliveryServiceImpl implements IDeliveryService
 
 	}
 	
+	@Override
+	public FoodOrder updateStatus(int orderId, String status)
+	{
+		FoodOrder order=orderRepo.findById(orderId).get();
+		order.setStatus(OrderStatus.valueOf(status.toUpperCase()));
+		return orderRepo.save(order);
+	}
+	
 }

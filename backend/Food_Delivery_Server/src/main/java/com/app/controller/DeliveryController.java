@@ -34,4 +34,11 @@ public class DeliveryController
 		deliveryService.assignDeliveryBoy(userId,orderId);
 		return new ResponseEntity<>(new ResponseDto<>("success","Order Assigned Successfully!!"),HttpStatus.OK);
 	}
+	
+	@PutMapping("/updateStatus/{orderId}/{status}")
+	public ResponseEntity<?> updateStatus(@PathVariable String status , @PathVariable int orderId){
+		
+		return new ResponseEntity<>(new ResponseDto<>("success",deliveryService.updateStatus(orderId, status)),HttpStatus.OK);
+	}
+	
 }

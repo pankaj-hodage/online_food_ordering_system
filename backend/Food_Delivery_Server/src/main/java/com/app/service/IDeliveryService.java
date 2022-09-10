@@ -9,4 +9,6 @@ public interface IDeliveryService
 	public List<FoodOrder> allPlacedOrders();
 
 	void assignDeliveryBoy(int userId, int orderId);
+
+	FoodOrder updateStatus(int orderId, String status);
 }
