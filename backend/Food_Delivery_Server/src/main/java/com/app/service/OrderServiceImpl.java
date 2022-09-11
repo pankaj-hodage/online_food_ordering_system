@@ -55,7 +55,7 @@ public class OrderServiceImpl implements IOrderService {
 	public String placeOrderForUser(int userId, int addrId, String paymentMode) {
 		// get all cart items for given user
 		List<Cart> cartItems = cartRepo.findAllItemsByUser(userId);
-
+		
 		double total = 0.0;
 		int deliveryCharges = 25;
 		for (Cart item : cartItems) {
@@ -84,6 +84,7 @@ public class OrderServiceImpl implements IOrderService {
 		});
 		cartRepo.deleteAll(cartItems);
 		return "Order Placed Successfully!";
+		
 	}
 
 	@Override
@@ -118,26 +119,15 @@ public class OrderServiceImpl implements IOrderService {
 		return response;
 	}
 
-	@Override
-	public List<FoodOrderDto> getAllCustomerOrders(int userId) {
-		List<FoodOrder> orders = foodOrderRepo.findAllOrdersByUserId(userId);
 
-		List<FoodOrderDto> response = new ArrayList<>();
-
-		for (FoodOrder order : orders) {
-			List<OrderDetails> orderDetails = orderDetailsRepo.findAllByOrderId(order.getId());
-			Payment payment = paymentRepo.findPaymentByOrderId(order.getId());
-			response.add(new FoodOrderDto(order, orderDetails, payment));
-		}
-		return response;
-	}
 
 	@Override
 	public void assignDeliveryBoy(int userId, int orderId) {
-		FoodOrder order = foodOrderRepo.findById(orderId).get();
-		User user = userRepo.findById(userId).get();
+		FoodOrder order = foodOrderRepo.findByOrderId(orderId);
+		User user = userRepo.findByUserId(userId);
 		order.setDeliverboy(user);
 		order.setStatus(OrderStatus.OUT_FOR_DELIVERY);
+	
 
 	}
 
@@ -168,5 +158,21 @@ public class OrderServiceImpl implements IOrderService {
 		}
 		return response;
 	}
+
+	@Override
+	public List<FoodOrderDto> getAllAssignedOrders(int deliveryBoyId) {
+		List<FoodOrder> orders = foodOrderRepo.findAllOrdersByUserId(deliveryBoyId);
+
+		List<FoodOrderDto> response = new ArrayList<>();
+
+		for (FoodOrder order : orders) {
+			List<OrderDetails> orderDetails = orderDetailsRepo.findAllByOrderId(order.getId());
+			Payment payment = paymentRepo.findPaymentByOrderId(order.getId());
+			response.add(new FoodOrderDto(order, orderDetails, payment));
+		}
+		return response;
+	}
+	
+	
 
 }

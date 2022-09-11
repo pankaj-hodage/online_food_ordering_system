@@ -10,7 +10,7 @@ public interface IAddressService {
 
 	Address addAddress(Address address, int userId);
 
-	
+	Address editAddress(Address address, int addressId);
 
 	String deleteAddress(int addressId);
 

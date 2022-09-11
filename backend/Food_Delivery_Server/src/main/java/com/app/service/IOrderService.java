@@ -12,7 +12,7 @@ public interface IOrderService {
 
 	List<FoodOrderDto> getAllPendingOrders();
 
-	List<FoodOrderDto> getAllCustomerOrders(int userId);
+	List<FoodOrderDto> getAllAssignedOrders(int deliveryBoyId);
 
 	void assignDeliveryBoy(int userId, int orderId);
 

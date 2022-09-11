@@ -31,8 +31,6 @@ public class AddressServiceImpl implements IAddressService {
 		return addressRepo.save(address);
 	}
 
-	
-
 	@Override
 	public String deleteAddress(int addressId) {
 		String mesg = "Deleting address details failed !!!!!";
@@ -42,6 +40,17 @@ public class AddressServiceImpl implements IAddressService {
 			mesg = "Deleted address details of emp of " + addressId;
 		}
 		return mesg;
+	}
+
+	@Override
+	public Address editAddress(Address address, int addressId) {
+		Optional<Address> address1 = Optional.of(addressRepo.findbyId(addressId));
+		Address address2 = address1.orElse(null);
+		address2.setLine1(address.getLine1());
+		address2.setLine2(address.getLine2());
+		address2.setContactNo(address.getContactNo());
+		System.out.println("------------------------"+address2);
+		return address2;
 	}
 
 	@Override

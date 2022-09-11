@@ -14,4 +14,7 @@ public interface FoodOrderRepository extends JpaRepository<FoodOrder, Integer> {
 	
 	@Query("Select o from FoodOrder o where o.deliverboy.id=?1")
 	List<FoodOrder> findAllOrdersByDeliverBoyId(Integer Id);
+	
+	@Query("select f from FoodOrder f where f.id=?1")
+	FoodOrder findByOrderId(int id);
 }

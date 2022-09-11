@@ -52,7 +52,6 @@ public class Menu
 	//@JsonIgnore
 
 	@ManyToOne//(fetch = FetchType.LAZY)
-
 	@JoinColumn(name = "cat_id",nullable = false)
 	private Category category;
 }
