@@ -43,4 +43,10 @@ public class RestaurentController
 		return ResponseEntity.ok(restoService.getAllRatings(restId));
 	}
 	
+	@GetMapping("/allMenus/{restId}")
+	public ResponseEntity<?> getAllMenusRating(@PathVariable int restId)
+	{
+		return ResponseEntity.ok(restoService.getAllMenus(restId));
+	}
+	
 }

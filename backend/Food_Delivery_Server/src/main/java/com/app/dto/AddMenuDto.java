@@ -27,12 +27,14 @@ public class AddMenuDto
 	private MultipartFile imageName;
 	private int restaurent;
 	private int catagory;
+	private Byte status;
 	
 	public static Menu toEntity(AddMenuDto dto) {
 		Menu entity=new Menu();
 		entity.setProductName(dto.menuName );
 		entity.setDescription(dto.description);
 		entity.setPrice(dto.price);
+		entity.setStatus((byte) 1);
 		return entity;
 	}
 	

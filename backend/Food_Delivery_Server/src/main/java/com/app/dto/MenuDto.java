@@ -25,4 +25,6 @@ public class MenuDto
 	private double price;
 	
 	private String description;
+	
+	private Byte status;
 }
