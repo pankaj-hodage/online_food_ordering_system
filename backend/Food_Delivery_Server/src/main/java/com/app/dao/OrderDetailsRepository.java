@@ -7,9 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.app.entities.OrderDetails;
+import com.app.entities.OrderStatus;
 
 public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Integer>{
 
 	@Query("Select o from OrderDetails o join fetch o.currentOrder where o.currentOrder.id=?1")
 	List<OrderDetails> findAllByOrderId(Integer id);
+	
+	@Query("Select o from OrderDetails o join fetch o.currentOrder  join fetch o.selectedProduct where o.currentOrder.status=?1 and o.selectedProduct.restaurant.id=?2")
+	List<OrderDetails> getPlacedOrders(OrderStatus status,Integer restId);
+	
 }

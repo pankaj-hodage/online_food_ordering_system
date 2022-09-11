@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.dto.ResponseDto;
 import com.app.entities.Category;
 import com.app.service.CategoryServiceImpl;
+
 @RestController
-@RequestMapping("/Category")
+@RequestMapping("/category")
 @CrossOrigin
-
-
 public class CategoryController {
 	@Autowired
 	CategoryServiceImpl categoryservice;
@@ -31,13 +30,6 @@ public class CategoryController {
 	
 		Category newcategory=categoryservice.addCategory(cat);
 		return new ResponseEntity<>(new ResponseDto<Category>("success",newcategory),HttpStatus.CREATED);
-	}
-	
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteNewCategory(@PathVariable int id){
-	
-		String message=categoryservice.deleteCategory(id);
-		return new ResponseEntity<>( message,HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/all")

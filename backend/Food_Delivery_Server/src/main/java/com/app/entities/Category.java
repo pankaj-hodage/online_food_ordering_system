@@ -1,10 +1,12 @@
 package com.app.entities;
 
-import javax.persistence.Column;
+
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Category 
 {
 	@Id
