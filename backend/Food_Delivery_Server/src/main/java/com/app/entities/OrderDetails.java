@@ -20,24 +20,34 @@ import lombok.ToString;
 @Table(name = "order_details")
 @Getter
 @Setter
-@ToString(exclude = {"orderId","selectedProduct"})
+@ToString(exclude = {"currentOrder","selectedProduct"})
 @NoArgsConstructor
-@AllArgsConstructor
+
 public class OrderDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name = "quantity")
 	private int quantity;
-	@Column(name = "total")
+	@Column(name = "total_ammount")
 	private double total;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id", nullable = false)
-	private FoodOrder orderId;
+	private FoodOrder currentOrder;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", nullable = false)
 	private Menu selectedProduct;
+
+	public OrderDetails(int quantity, double total, FoodOrder currentOrder, Menu selectedProduct) {
+		super();
+		this.quantity = quantity;
+		this.total = total;
+		this.currentOrder = currentOrder;
+		this.selectedProduct = selectedProduct;
+	}
+	
+	
 
 }

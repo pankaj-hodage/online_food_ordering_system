@@ -1,0 +1,49 @@
+package com.app.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.dao.FoodOrderRepository;
+import com.app.dao.UserRepository;
+import com.app.entities.FoodOrder;
+import com.app.entities.OrderStatus;
+import com.app.entities.User;
+
+@Service
+@Transactional
+public class DeliveryServiceImpl implements IDeliveryService
+{
+
+	@Autowired
+	private FoodOrderRepository orderRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Override
+	public List<FoodOrder> allPlacedOrders() {
+	
+		return orderRepo.findByStatus(OrderStatus.PLACED);
+	}
+	
+	@Override
+	public void assignDeliveryBoy(int userId, int orderId) {
+		FoodOrder order = orderRepo.findById(orderId).get();
+		User user = userRepo.findById(userId).get();
+		order.setDeliverboy(user);
+		order.setStatus(OrderStatus.OUT_FOR_DELIVERY);
+
+	}
+	
+	@Override
+	public FoodOrder updateStatus(int orderId, String status)
+	{
+		FoodOrder order=orderRepo.findById(orderId).get();
+		order.setStatus(OrderStatus.valueOf(status.toUpperCase()));
+		return orderRepo.save(order);
+	}
+	
+}
