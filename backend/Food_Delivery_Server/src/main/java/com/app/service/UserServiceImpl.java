@@ -42,7 +42,7 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User registerUser(User user) {
 
-		user.setRole(Role.CUSTOMER);
+		//user.setRole(Role.CUSTOMER);
 		return userRepo.save(user);
 	}
 
