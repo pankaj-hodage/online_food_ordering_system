@@ -19,11 +19,11 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString(exclude = {"selectedCustomer","selectedRestaurant"})
+@ToString(exclude = { "selectedCustomer", "selectedRestaurant" })
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "rating")
-public class Rating   {
+public class Rating {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,5 +39,13 @@ public class Rating   {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id", nullable = false)
 	private User selectedCustomer;
+
+	public Rating(int rating, String comment, User selectedRestaurant, User selectedCustomer) {
+		super();
+		this.rating = rating;
+		this.comment = comment;
+		this.selectedRestaurant = selectedRestaurant;
+		this.selectedCustomer = selectedCustomer;
+	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.RatingRepository;
 import com.app.dao.UserRepository;
+import com.app.dto.RatingDto;
 import com.app.entities.Rating;
 import com.app.entities.User;
 
@@ -25,29 +26,34 @@ public class RatingServiceImpl implements IRatingService{
 	
 	
 	@Override
-	public Rating addRating(Rating rating, int userId) {
-		User user = userDao.findById(userId).orElseThrow(()-> new ResourceNotFoundException("Invalid Credentials !!"));
-		rating.setSelectedCustomer(user);
-		return ratingDao.save(rating);
+	public Rating addRating(RatingDto rating) {
+		User customer = userDao.findById(rating.getUserId()).orElseThrow(()-> new ResourceNotFoundException("Invalid Credentials !!"));
+		User restaurant = userDao.findById(rating.getRestId()).orElseThrow(()-> new ResourceNotFoundException("Invalid Credentials !!"));
+
+		//int rating, String comment, User selectedRestaurant, User selectedCustomer
+		Rating rating1 = new Rating(rating.getRating(),rating.getComment(),restaurant,customer);
+		return ratingDao.save(rating1);
 
 	}
 	
 	
 	@Override
-	public Rating editRating(Rating rating, int userId) {
-		Optional<Rating> rating1 = ratingDao.findById(userId);
-		Rating rating2 = rating1.orElse(null);
-		rating2.setRating(rating.getRating());
+	public Rating editRating(RatingDto rating, int ratingId) {
+		Rating rating1 = ratingDao.findById(ratingId).orElseThrow(()-> new ResourceNotFoundException("rating not found"));
 		
-		System.out.println("------------------------"+rating2);
-		return rating2;
+		rating1.setRating(rating.getRating());
+		rating1.setComment(rating.getComment());
+		
+		System.out.println("------------------------"+rating1);
+		return rating1;
 	}
 	
 	
 	@Override
-	public String deleteRating(int userId) {
-		System.out.println("userId : "+ userId);
-		ratingDao.deleteById(userId);
+	public String deleteRating(int ratingId) {
+		System.out.println("userId : "+ ratingId);
+		
+		ratingDao.deleteById(ratingId);
 		return "success";
 	}
 	
