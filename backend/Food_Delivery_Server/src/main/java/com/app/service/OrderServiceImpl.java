@@ -121,15 +121,8 @@ public class OrderServiceImpl implements IOrderService {
 
 
 
-	@Override
-	public void assignDeliveryBoy(int userId, int orderId) {
-		FoodOrder order = foodOrderRepo.findByOrderId(orderId);
-		User user = userRepo.findByUserId(userId);
-		order.setDeliverboy(user);
-		order.setStatus(OrderStatus.OUT_FOR_DELIVERY);
-	
 
-	}
+
 
 	@Override
 	public void updateOrderStatus(int orderId, String status, int deliveryId) {

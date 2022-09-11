@@ -1,12 +1,18 @@
 package com.app.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,7 +56,7 @@ public class MenuController
 		System.out.println( " orig file name " + dto.getImageName().getOriginalFilename());
 		Menu menu=AddMenuDto.toEntity(dto);
 		menu.setRestaurant(userService.getUserDetails(dto.getRestaurent()));
-		menu.setCategory(catRepo.getById(dto.getCatagory()));
+		menu.setCategory(catRepo.findById(dto.getCatagory()).get());
 		
 		menu = menuService.addMenu(menu,dto.getImageName());
 		
@@ -79,5 +85,14 @@ public class MenuController
 	{
 		List<Menu> list = menuService.findAll();
 		return ResponseDto.success(list);
+	}
+	
+	//get image
+	@PostMapping(value="/image/{menuId}",produces ="image/*")
+	public void downloadImage( @PathVariable int menuId ,HttpServletResponse resp) throws IOException
+	{
+		System.out.println("in downlaod img "+menuId);
+		Resource resource = imageService.load(menuId);
+		FileCopyUtils.copy(resource.getInputStream(), resp.getOutputStream());
 	}
 }

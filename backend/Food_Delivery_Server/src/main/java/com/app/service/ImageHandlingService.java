@@ -9,12 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface ImageHandlingService {
 
-	List<String> loadAll();
 	
 	String store(MultipartFile file);
 	
-	Resource load(String fileName);
-	
-	void delete(String fileName);
+	Resource load(int menuId);
 
 }

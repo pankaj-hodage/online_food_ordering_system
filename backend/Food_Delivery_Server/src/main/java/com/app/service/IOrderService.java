@@ -14,7 +14,7 @@ public interface IOrderService {
 
 	List<FoodOrderDto> getAllAssignedOrders(int deliveryBoyId);
 
-	void assignDeliveryBoy(int userId, int orderId);
+	//void assignDeliveryBoy(int userId, int orderId);
 
 	void updateOrderStatus(int orderId, String status, int deliveryId);
 

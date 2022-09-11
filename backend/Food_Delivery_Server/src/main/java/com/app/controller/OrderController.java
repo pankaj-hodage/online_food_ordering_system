@@ -60,14 +60,7 @@ public class OrderController {
 		return ResponseEntity.ok().body(orderService.getMyOrders(userId));
 	}
 
-	// assign order to delivery boy
-	@PutMapping("/update")
-	public  ResponseEntity<?> assignDeliveryBoy(@RequestBody AssignDeliveryBoyDto assignDelivery) {
-		orderService.assignDeliveryBoy(assignDelivery.getUserId(), assignDelivery.getOrderId());
-		return new ResponseEntity<>(new ResponseDto<>("success", "Order Assigned Successfully!!"), HttpStatus.OK);
-	}
-
-	//update order status 
+	// update order status
 	@PutMapping("/update_status")
 	public ResponseEntity<?> updateOrderStatus(@RequestBody HashMap<String, String> orderInput) {
 		orderService.updateOrderStatus(Integer.parseInt(orderInput.get("orderId")), orderInput.get("status"),
