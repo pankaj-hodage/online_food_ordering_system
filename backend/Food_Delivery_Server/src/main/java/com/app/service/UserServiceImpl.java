@@ -9,7 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custom_exception.ResourceNotFoundException;
 import com.app.dao.UserRepository;
+import com.app.dto.ForgotPasswordDto;
 import com.app.dto.LoginRequestDto;
+
+import com.app.dto.UserDetailsDto;
 import com.app.dto.UserDto;
 import com.app.entities.Role;
 import com.app.entities.User;
@@ -24,10 +27,14 @@ public class UserServiceImpl implements IUserService {
 
 	//Update User Details
 	@Override
-	public User updateUserProfile(User user) {
-		userRepo.findById(user.getId())
+	public User updateUserProfile(UserDetailsDto userDto, int userId) {
+		User user=userRepo.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid User !!! Can not upadate details"));
-		return userRepo.save(user);
+		user.setContact(userDto.getContact_no());
+		user.setEmail(userDto.getEmail());
+		user.setName(userDto.getName());
+		user.setPassword(userDto.getPassword());
+		return user;
 	}
 
 	//Authenticate User
@@ -53,25 +60,30 @@ public class UserServiceImpl implements IUserService {
 		return userRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("User Not Found !!!"));
 	}
 
-	//Delete User 
+	
+
 	@Override
-	public String deleteUser(Integer id) {
+	public User forgotPassword(ForgotPasswordDto forgetPassword) {
+		User user=userRepo.findByEmail(forgetPassword.getEmail())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid User !!! Can not upadate details"));
+		user.setPassword(forgetPassword.getPassword());;
 		
-		String mesg = "Deleting user details failed !!!!!";
-		// if you want to confirm the id :
-		if (userRepo.existsById(id)) {
-			userRepo.deleteById(id);
-			mesg = "Deleted user details of emp of " + id;
-		}
-		return mesg;
+		return user;
 	}
 
-	//Get All User List
 	@Override
-	public List<User> getAllUser() {
+	public List<User> getAllCustomer() {
 		
-		return userRepo.findAll();
+		return userRepo.findAllCustomer();
 	}
+
+	@Override
+	public List<User> getAllDeliveryBoy() {
+		
+		return userRepo.findAllDeliveryBoy();
+	}
+
+	
 
 
 }

@@ -17,10 +17,13 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	// find user by id
 
 	Optional<User> findById(Integer userid);
-
+	
+	@Query("select u from User u where u.email=?1")
 	Optional<User> findByEmail(String email);
-	@Query("select u from User u where u.role=?1")
-	List<User> findByRole(Role role);
+	@Query("select u from User u where u.role='CUSTOMER'")
+	List<User> findAllCustomer();
+	@Query("select u from User u where u.role='DELIVERYBOY'")
+	List<User> findAllDeliveryBoy();
 	@Query("select u from User u where u.id=?1")
 	User findByUserId(int userId);
 }

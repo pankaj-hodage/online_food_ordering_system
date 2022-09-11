@@ -1,12 +1,13 @@
 package com.app.service;
 
+import com.app.dto.RatingDto;
 import com.app.entities.Rating;
 
 public interface IRatingService {
 
-	Rating addRating(Rating rating, int userId);
+	Rating addRating(RatingDto rating);
 
-	Rating editRating(Rating rating, int userId);
+	Rating editRating(RatingDto rating, int ratingId);
 
 	String deleteRating(int userId);
 
