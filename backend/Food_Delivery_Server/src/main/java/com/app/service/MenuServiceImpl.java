@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.custom_exception.ResourceNotFoundException;
+import com.app.dao.CategoryRepository;
 import com.app.dao.MenuRepository;
 import com.app.dto.MenuDto;
+import com.app.entities.Category;
 import com.app.entities.Menu;
 
 
@@ -23,6 +25,9 @@ public class MenuServiceImpl implements IMenuService
 	
 	@Autowired
 	ImageServiceImpl imageService;
+	
+	@Autowired
+	CategoryRepository catRepo;
 
 	@Override
 	public Menu addMenu(Menu menu, MultipartFile imageName) {
@@ -55,6 +60,13 @@ public class MenuServiceImpl implements IMenuService
 	public List<Menu> findAll() {
 		
 		return menuRepo.findAll();
+	}
+	
+	@Override
+	public List<Menu> findByCategory(int id) {
+		Category cat = catRepo.findById(id).get();
+		List<Menu> menulist = menuRepo.getMenuList(cat);
+		return menulist;
 	}
 	
 }

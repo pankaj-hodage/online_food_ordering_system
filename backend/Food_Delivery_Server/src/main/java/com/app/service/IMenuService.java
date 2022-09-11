@@ -16,4 +16,6 @@ public interface IMenuService
 	String deleteMenu(int id);
 	
 	public List<Menu> findAll();
+
+	List<Menu> findByCategory(int id);
 }

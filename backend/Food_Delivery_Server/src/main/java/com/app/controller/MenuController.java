@@ -95,4 +95,11 @@ public class MenuController
 		Resource resource = imageService.load(menuId);
 		FileCopyUtils.copy(resource.getInputStream(), resp.getOutputStream());
 	}
+	@GetMapping("/allMenuByType/{id}")
+	public ResponseEntity<?> menuByType(@PathVariable int id){
+		List<Menu> menu = menuService.findByCategory(id);
+		return ResponseEntity.ok().body(new ResponseDto<List<Menu>>("success", menu));
+				
+	}
+	
 }
