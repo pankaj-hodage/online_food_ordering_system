@@ -42,6 +42,7 @@ public class MenuServiceImpl implements IMenuService
 		Menu menu = getMenuDetails(id);
 		menu.setDescription(menuDto.getDescription());
 		menu.setPrice(menuDto.getPrice());
+		menu.setStatus(menuDto.getStatus());
 		return menuRepo.save(menu);
 	}
 	
@@ -59,7 +60,7 @@ public class MenuServiceImpl implements IMenuService
 	@Override
 	public List<Menu> findAll() {
 		
-		return menuRepo.findAll();
+		return menuRepo.findAllByStatus();
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class DeliveryServiceImpl implements IDeliveryService
 	{
 		FoodOrder order=orderRepo.findById(orderId).get();
 		order.setStatus(OrderStatus.valueOf(status.toUpperCase()));
+		order.setStatusUpdateDate(LocalDateTime.now());
+		if (status.equals("DELIVERED")) 
+			order.setDeliveredTime(LocalDateTime.now());
 		return orderRepo.save(order);
 	}
 	
