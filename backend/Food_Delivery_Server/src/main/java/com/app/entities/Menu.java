@@ -31,7 +31,7 @@ public class Menu
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "product_name" ,length =20,unique = true)
+	@Column(name = "product_name" ,length =20)
 	private String productName;
 	
 	@Column(length =100,name = "description")
