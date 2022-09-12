@@ -19,5 +19,5 @@ public interface IUserService {
 	User forgotPassword(ForgotPasswordDto forgetPassword);
 	List<User> getAllCustomer();
 	List<User> getAllDeliveryBoy();
-
+	List<User> getAllRestaurant();
 }

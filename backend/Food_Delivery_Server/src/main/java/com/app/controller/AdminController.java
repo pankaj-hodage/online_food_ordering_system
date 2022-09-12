@@ -31,4 +31,11 @@ public class AdminController {
 		return ResponseEntity.ok(userService.getAllDeliveryBoy());
 		
 	}
+	
+	@GetMapping("/getAllRestaurant")
+	public ResponseEntity<?> gatAllRestaurants() {
+		
+		return ResponseEntity.ok(userService.getAllRestaurant());
+		
+	}
 }

@@ -83,6 +83,12 @@ public class UserServiceImpl implements IUserService {
 		return userRepo.findAllDeliveryBoy();
 	}
 
+	@Override
+	public List<User> getAllRestaurant() {
+		
+		return userRepo.findAllRestaurant();
+	}
+
 	
 
 
