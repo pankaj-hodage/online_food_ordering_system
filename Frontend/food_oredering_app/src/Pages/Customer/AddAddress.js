@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 import { useState,useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import './Address.css'
 import config from '../../config'
 import { toast } from 'react-toastify'
