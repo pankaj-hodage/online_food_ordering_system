@@ -10,7 +10,7 @@ import CustHomeNv from './../../components/CustHomeNv';
 
 const Cart=()=>{
     const [cart, setCart] = useState([])
-    const userid = 2//sessionStorage.getItem("userId")
+    const userid = 1//sessionStorage.getItem("userId")
 
     useEffect(() => {
         console.log(`Cart is loaded`)
@@ -23,6 +23,7 @@ const Cart=()=>{
           const result = response.data
           if (result.status === 'success') {
             setCart(result.data)
+            console.log(cart)
           } else {
             toast.error('error while loading list of cart')
         

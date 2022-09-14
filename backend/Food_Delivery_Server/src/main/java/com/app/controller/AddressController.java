@@ -55,7 +55,8 @@ public class AddressController {
 	@GetMapping("/show/{id}")
 	public ResponseEntity<?> gatAllAddress(@PathVariable int id) {
 		
-		return ResponseEntity.ok(addressService.getAllAddressesByUserId(id));
+		return ResponseEntity.ok().body(new ResponseDto<>("Success" ,addressService.getAllAddressesByUserId(id) ));
+				//(addressService.getAllAddressesByUserId(id));
 		
 	}
 }

@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import config from '../../config'
 import { toast } from 'react-toastify'
 import IncDecCounter from './IncDecCounter';
+import img from './images/misal.jpg'
 
 
 const CustomerHome=()=>{
@@ -48,10 +49,11 @@ const CustomerHome=()=>{
         })
       }
       const addToCart=(id)=>{
+        console.log("incart method")
         const userId = 1 //sessionStorage.getItem("userId");
 
         axios.post(`${config.serverURL}/cart/add`,{"menuId" :id,"userId" :userId,
-        "quantity" :1},{"Content-Type": "application/json"}).then((Response)=>{
+        "quantity" :quantity},{"Content-Type": "application/json"}).then((Response)=>{
 
             const result = Response.data
 
@@ -64,12 +66,15 @@ const CustomerHome=()=>{
         })
       }
 
-    // const loadImage=(menuId)=>{
-    //     axios.post(`${config.serverURL}/menu/image/${menuId}`).then((Response)=>{
+    const loadImage=(menuId)=>{
+        axios.post(`${config.serverURL}/menu/image/${menuId}`).then((Response)=>{
 
-    //         setImages( Response.data)
-    //     })
-    // }
+            setImages( Response.data)
+            console.log(Response)
+            return  Response.data
+        })
+    }
+const test=(id)=>{ console.log("Test method"+id) }
 
     return(
         <div className="container">
@@ -86,7 +91,7 @@ const CustomerHome=()=>{
         <div className='row'>
         {menu.map((m)=>{
 
-            
+           
             return (
             <div
               key={m.id}
@@ -105,7 +110,9 @@ const CustomerHome=()=>{
                   display: 'block',
                   borderRadius: 10,
                 }}
-                src={image}
+              // src={'http://localhost:3000/' + m.image}
+             //  src={ require('./images/'+m.image).default}
+              src={img}
               />
               <div style={{ marginTop: 20 }}>
                 <h5 className='card-title'>{m.productName}</h5>
@@ -114,7 +121,7 @@ const CustomerHome=()=>{
                   Rs. {m.price}
                 </p>
               </div>
-              <div className="col-sm-5"> 
+               <div className="col-sm-5"> 
               <label  className="form-label" for="form3Example97" 
                     >Qty</label>
                     <input type="text" id="form3Example97" className="form-control form-control-lg" 
@@ -122,8 +129,8 @@ const CustomerHome=()=>{
                       setQuantity(e.target.value)
                     }} />
                 </div  >
-                <div className="col-sm-12">
-                <button onClick={addToCart(m.id)} type="submit" className="btn btn-success btn-block">Add To Cart</button>
+               <div className="col-sm-12">
+                <button onClick={()=>addToCart(m.id)} type="button" className="btn btn-success">Add To Cart</button>
                 </div>
             </div>    
          ) })}

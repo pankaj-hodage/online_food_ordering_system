@@ -10,75 +10,125 @@ import {useForm} from "react-hook-form";
 
 const SelectAddress=()=>{
     
-    const[address,setAddress]=useState([])
-    const {register, handleSubmit} = useForm();
-    const userid = 2//sessionStorage.getItem("userId")
-
+    const [address, setAddress] = useState([])
+    const userid = 1//sessionStorage.getItem("userId")
+    let navigate = useNavigate();
+   var result
     useEffect(() => {
         
-        getAddress()
+        getAllAddress()
         console.log(`address is loaded`)
       }, [])
 
-        const getAddress=()=>{
+        const getAllAddress=()=>{
 
         axios.get( `${config.serverURL}/address/show/${userid}`).then((response) => {
-            const result = response.data
+
+             result = response.data
+          if (result.status === 'Success') {
             setAddress(result.data)
-            // if (result.status === 'success') {
-            //   setAddress(result.data)
-            // } else {
-            //   toast.error('error while loading Address')
-          
-            // }
+            console.log(result.data)
+            console.log(address)
+           //result.data.forEach((add) => {console.log(add)})
+          } else {
+            toast.error('error while loading list of cart')
+        
+          }
           })
-    }
-    function onSubmitButton(data) {
-        console.log(data)
-    }
+    }   
+    const nextPage=()=>{
+         var form= document.getElementById("FORM")
+        const formData = new FormData(form);
+        const addId=formData.get('radio')
+        console.log("address id :"+addId)
+        sessionStorage.setItem("addressId" , addId)
+        navigate('/Payment')
 
+    }
     return(
-    <div>
-         <table class="table m-0">
-                         <thead>
-                                 <tr>
-                                     <th scope="col">Line 1</th>
-                                     <th scope="col">Line 2</th>
-                                     <th scope="col">City</th>
-                                     <th scope="col">State</th>
-                                     <th scope="col">contact no</th>
-                                     <th scope="col">pinCode</th>
+      <div className="container">
+        <CustHomeNv></CustHomeNv>
+          <div class="myStyle">
+            <form id="FORM">
+                        <h4 style={ {marginLeft:240,marginTop:20}}>Address</h4>           
+                                   {address.map((add) => {
+                                    
+                                      return (
+                                          
+                                         <div class="form-check"style={ {marginLeft:150,marginTop:20}}> 
+        <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value={add.id}/>
+        <label class="form-check-label" for="flexRadioDefault1">
+                                          <div>
+                                            <div> {add.line1}, {add.line2},</div>
+                                            <div>{add.city}, {add.state}, pin: {add.pincode}</div>
+                                           <div> Mob:{add.contactNo}</div>
+                                          </div>
+                                          
+                                          </label>
+                                          </div>
+                      
+                                      )
+                                       })}
+                                      
+                                      <button onClick={nextPage}type="submit" className="btn btn-success " style={ {marginLeft:240,marginTop:50}}>proceed</button>
+                  </form>
+              </div>
+              </div>
+          )
+      }
 
-                                 </tr>
-                             </thead>
-                             <tbody>
-                             <form onSubmit={handleSubmit(onSubmitButton)}>
-                             {address.map((addresse) => {
+      export default SelectAddress
+
+
+
+
+
+
+
+//     return(
+//     <div class="myStyle">
+//       <form id="FORM">
+//          <table class="table m-0">
+//                          <thead>
+//                                  <tr>
+//                                      <th scope="col">Line 1</th>
+//                                      <th scope="col">Line 2</th>
+//                                      <th scope="col">City</th>
+//                                      <th scope="col">State</th>
+//                                      <th scope="col">contact no</th>
+//                                      <th scope="col">pinCode</th>
+
+//                                  </tr>
+//                              </thead>
+//                              <tbody>
+                             
+//                              {address.map((add) => {
                               
-                                return (
-                                    <tr>
-                                    <input
-                    {...register("option")}
-                    type="radio"
-                    name="id"
-                    value={address.id}
-                    id="name"
-                />
-                                    <td>{addresse.line1}</td>
-                                    <td>{addresse.line2}</td>
-                                    <td>{addresse.city}</td>
-                                    <td>{addresse.state}</td>
-                                    <td>{addresse.contactNo}</td>
-                                    <td>{addresse.pincode}</td>
-                                  </tr>
-                                )
-                                 })}
-                                <button type="submit" className="btn btn-success ">proceed</button>
-                                 </form>
-                             </tbody>
-            </table>
-        </div>
-    )
-}
+//                                 return (
+//                                     <tr>
+//                                         {/* <div class="form-check"> */}
+//   <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value={add.id}/>
+//   <label class="form-check-label" for="flexRadioDefault1">
+//                                     <td>{add.line1}</td>
+//                                     <td>{add.line2}</td>ss
+//                                     <td>{add.city}</td>
+//                                     <td>{add.state}</td>
+//                                     <td>{add.contactNo}</td>
+//                                     <td>{add.pincode}</td>
+//                                     </label>
+//                                     {/* </div> */}
+                          
+//                                   </tr>
+                                  
+//                                 )
+//                                  })}
+                                
+//                                 <button onClick={nextPage}type="submit" className="btn btn-success " style={ {marginLeft:240,marginTop:50}}>proceed</button>
+                               
+//                              </tbody>
+//             </table>
+//             </form>
+//         </div>
+//     )
+// }
 
-export default SelectAddress

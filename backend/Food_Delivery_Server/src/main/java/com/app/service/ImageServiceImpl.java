@@ -21,7 +21,7 @@ import com.app.entities.Menu;
 @Transactional
 public class ImageServiceImpl implements ImageHandlingService {
 
-	@Value("${file.upload.folder}")
+	@Value("${file.upload.basepath}")
 	private String BASEPATH;
 	
 	@Autowired
