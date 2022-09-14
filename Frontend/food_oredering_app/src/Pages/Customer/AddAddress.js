@@ -25,7 +25,7 @@ const AddAddress = () => {
       if(data !== undefined){
         axios.post(`${config.serverURL}/address/add/${id}` ,{'line1':line1,'line2':line2,'city':city,'state': state ,'contactNo':contactNo,'pincode':pincode},{"Content-Type": "application/json"}).then((Response)=>{
           toast.success("Address Added Successfully !!!")
-          navigate("/OrderDetails");
+          navigate("/SelectAddress");
         })
       }
     },[data])

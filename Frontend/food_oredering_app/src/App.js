@@ -6,6 +6,8 @@ import AddAddress from './Pages/Customer/AddAddress';
 import CustomerHome from './Pages/homePage/CustomerHome';
 import Cart from './Pages/Customer/Cart';
 import SelectAddress from './Pages/Customer/SelectAddress';
+import Payment from './Pages/Customer/Payment';
+
 
 
 
@@ -19,6 +21,7 @@ function App() {
         <Route exact path='/AddAddress' element={<AddAddress/>}/>
         <Route exact path='/Cart' element={<Cart/>}/>
         <Route exact path='/SelectAddress' element={<SelectAddress/>}/>
+        <Route exact path='/Payment' element={<Payment/>}/>
     </Routes>
 
     {/* this container is used to show toast messages */}

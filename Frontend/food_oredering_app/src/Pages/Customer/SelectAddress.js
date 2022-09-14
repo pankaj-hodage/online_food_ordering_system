@@ -41,10 +41,18 @@ const SelectAddress=()=>{
         const formData = new FormData(form);
         const addId=formData.get('radio')
         console.log("address id :"+addId)
+        if (addId.length == 0) {
+          toast.warning('please select address')
+      } else{
         sessionStorage.setItem("addressId" , addId)
         navigate('/Payment')
-
+      }
+      
     }
+    const goToPage=()=>{
+      navigate('/AddAddress')
+    }
+
     return(
       <div className="container">
         <CustHomeNv></CustHomeNv>
@@ -70,7 +78,8 @@ const SelectAddress=()=>{
                                       )
                                        })}
                                       
-                                      <button onClick={nextPage}type="submit" className="btn btn-success " style={ {marginLeft:240,marginTop:50}}>proceed</button>
+                                      <button onClick={nextPage} className="btn btn-success " style={ {marginLeft:240,marginTop:50}}>proceed</button>
+                                      <button onClick={goToPage} className="btn btn-dark " style={ {marginLeft:225,marginTop:20}}>Add address</button>
                   </form>
               </div>
               </div>

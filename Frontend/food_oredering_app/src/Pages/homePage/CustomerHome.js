@@ -5,7 +5,6 @@ import { useState,useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import config from '../../config'
 import { toast } from 'react-toastify'
-import IncDecCounter from './IncDecCounter';
 import img from './images/misal.jpg'
 
 
