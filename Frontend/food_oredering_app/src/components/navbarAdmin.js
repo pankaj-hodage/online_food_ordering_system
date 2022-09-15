@@ -10,7 +10,7 @@ const NavbarAdmin=()=>{
 
     <div id="navbarSupportedContent" class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a href="/customerList" class="nav-link">User-List</a></li>
+        <li class="nav-item"><a href="/customerList" class="nav-link" >User-List</a></li>
         <li class="nav-item"><a href="/restaurantList" class="nav-link">Restaurant List</a></li>
       
         <li class="nav-item"><a href="/deliveryBoyList" class="nav-link">DeliveryBoy-List</a></li>

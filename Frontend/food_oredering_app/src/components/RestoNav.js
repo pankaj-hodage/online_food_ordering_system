@@ -22,7 +22,7 @@ const RestoNav=()=>{
     <li class="nav-item"><a href="/Orders" class="nav-link">Orders</a></li>
   
     {/* <li class="nav-item"><a href="/updateprofile" class="nav-link">Update Profile</a></li> */}
-    <li class="nav-item"><a href="/Feedbacks" class="nav-link">Feedbacks</a></li>
+    <li class="nav-item"><a href="/ShowFeedbacks" class="nav-link">Feedbacks</a></li>
     
    
 

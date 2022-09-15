@@ -10,7 +10,7 @@ import './Resto.css'
 const Products=()=>{
     
     const[menuList,setMenuList]=useState([])
-    const restoId=7//sessionStorage.getItem("userId")
+    const restoId=sessionStorage.getItem("userId")
     const navigate = useNavigate()
 
     useEffect(() => {
