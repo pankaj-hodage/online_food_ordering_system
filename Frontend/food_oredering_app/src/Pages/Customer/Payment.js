@@ -2,17 +2,19 @@
 import CustHomeNv from './../../components/CustHomeNv';
 import axios from 'axios'
 import { useState,useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate,useLocation } from 'react-router-dom'
 import config from '../../config'
 import { toast } from 'react-toastify'
 
 const Payment=()=>{
 
     const userId=1//sessionStorage.getItem("userId")
-    const addressId=2//sessionStorage.getItem("addressId")
-    let navigate = useNavigate();
+   // const addressId=2//sessionStorage.getItem("addressId")
+    const location = useLocation()
+    const navigate = useNavigate();
+    const { addressId } = location.state
+
     // useEffect(() => {
-        
     //   }, [])
     const makePayment=()=>{
 

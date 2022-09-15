@@ -18,4 +18,6 @@ public interface IMenuService
 	public List<Menu> findAll();
 
 	List<Menu> findByCategory(int id);
+
+	List<Menu> findByResto(int id);
 }

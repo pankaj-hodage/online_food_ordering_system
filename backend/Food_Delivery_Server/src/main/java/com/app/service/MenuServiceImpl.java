@@ -70,4 +70,13 @@ public class MenuServiceImpl implements IMenuService
 		return menulist;
 	}
 	
+	@Override
+	public List<Menu> findByResto(int id) {
+		
+		List<Menu> menulist = menuRepo.findAllByResto(id);
+		return menulist;
+	}
+	
+	
+	
 }

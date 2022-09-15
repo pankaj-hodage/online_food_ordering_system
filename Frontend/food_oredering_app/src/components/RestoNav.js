@@ -1,7 +1,7 @@
 
 import './navbar.css'
 
-const CustHomeNv=()=>{
+const RestoNav=()=>{
  
   
    return(
@@ -15,37 +15,16 @@ const CustHomeNv=()=>{
 
 <div id="navbarSupportedContent" class="collapse navbar-collapse">
   <ul class="navbar-nav ml-auto">
-  <li class="nav-item"><a href="/CustomerHomePage" class="nav-link">
-  <i class="fa fa-home" style={{fontSize:32 }}></i>
+  <li class="nav-item"><a href="/RestoHomePage" class="nav-link">
+  <i class="fa fa-home" style={{fontSize:32 ,marginRight:20}}></i>
     </a></li>
-    <li class="nav-item"><a href="/About" class="nav-link">About Us</a></li>
-    <li class="nav-item"><a href="/Contact" class="nav-link">Contact Us</a></li>
+    <li class="nav-item"><a href="/Products" class="nav-link">Products</a></li>
+    <li class="nav-item"><a href="/Orders" class="nav-link">Orders</a></li>
   
     {/* <li class="nav-item"><a href="/updateprofile" class="nav-link">Update Profile</a></li> */}
-    <li class="nav-item"><a href="/Feedback" class="nav-link">Feedback</a></li>
-     <li class="nav-item"><a href="/Cart" class="nav-link"> 
-     
-     <i class="fas fa-shopping-cart" ></i>
-      
-      &nbsp; Cart
-       
-     {/* <ShoppingCartOutlinedIcon/> */}
-       
-       </a></li> 
+    <li class="nav-item"><a href="/Feedbacks" class="nav-link">Feedbacks</a></li>
+    
    
-    {/* <li class="nav-item"><a href="/Southindian" class="nav-link">South-Indian</a></li>
-    <li class="nav-item"><a href="/Roti" class="nav-link">Roti</a></li>
-    <li class="nav-item"><a href="/Rice" class="nav-link">Rice</a></li>
-
-    <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
-    <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-    <li class="nav-item"><a href="/UpdateProfile" class="nav-link">Update_profile</a></li>  */}
-    {/* <div class="mybtn-right">
-    <Link className="nav-link" className="btn btn-danger"  to="/Logout">Logout</Link>
-  </div> */}
-   
-
-
 
    <div className="btn-group" class="mybtn-right">
 <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,4 +55,4 @@ const CustHomeNv=()=>{
 )
 }
 
-export default CustHomeNv;
+export default RestoNav;

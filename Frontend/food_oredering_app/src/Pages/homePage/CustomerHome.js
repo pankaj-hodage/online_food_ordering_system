@@ -5,7 +5,6 @@ import { useState,useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import config from '../../config'
 import { toast } from 'react-toastify'
-import img from './images/misal.jpg'
 
 
 const CustomerHome=()=>{
@@ -13,7 +12,7 @@ const CustomerHome=()=>{
     const [category,setCategory] = useState([])
     const [menu,setMenu] = useState([])
     const[quantity,setQuantity]=useState(0)
-    const [image,setImages]=useState([])
+ 
 
     useEffect(() => {
         allCategories()
@@ -65,20 +64,13 @@ const CustomerHome=()=>{
         })
       }
 
-    const loadImage=(menuId)=>{
-        axios.post(`${config.serverURL}/menu/image/${menuId}`).then((Response)=>{
-
-            setImages( Response.data)
-            console.log(Response)
-            return  Response.data
-        })
-    }
-const test=(id)=>{ console.log("Test method"+id) }
+    
+const imgurl= config.serverURL+ '/' + 'vadapav.jpg'
 
     return(
-        <div className="container">
+        <div className="container-fluid">
         <CustHomeNv/>
-        <div className="container">
+        <div className="container-fluid">
         { 
         category.map((cat)=>{
 
@@ -111,7 +103,7 @@ const test=(id)=>{ console.log("Test method"+id) }
                 }}
               // src={'http://localhost:3000/' + m.image}
              //  src={ require('./images/'+m.image).default}
-              src={img}
+              src={config.serverURL+ '/' + m.image}
               />
               <div style={{ marginTop: 20 }}>
                 <h5 className='card-title'>{m.productName}</h5>

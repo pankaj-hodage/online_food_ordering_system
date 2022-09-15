@@ -45,7 +45,7 @@ const SelectAddress=()=>{
           toast.warning('please select address')
       } else{
         sessionStorage.setItem("addressId" , addId)
-        navigate('/Payment')
+        navigate('/Payment', { state: { addressId: addId } })
       }
       
     }

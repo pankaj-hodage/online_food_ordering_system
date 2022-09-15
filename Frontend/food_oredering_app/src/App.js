@@ -7,6 +7,8 @@ import CustomerHome from './Pages/homePage/CustomerHome';
 import Cart from './Pages/Customer/Cart';
 import SelectAddress from './Pages/Customer/SelectAddress';
 import Payment from './Pages/Customer/Payment';
+import Products from './Pages/Restaurent/Products';
+
 
 
 
@@ -22,6 +24,8 @@ function App() {
         <Route exact path='/Cart' element={<Cart/>}/>
         <Route exact path='/SelectAddress' element={<SelectAddress/>}/>
         <Route exact path='/Payment' element={<Payment/>}/>
+        <Route exact path='/Products' element={<Products/>}/>
+    
     </Routes>
 
     {/* this container is used to show toast messages */}
