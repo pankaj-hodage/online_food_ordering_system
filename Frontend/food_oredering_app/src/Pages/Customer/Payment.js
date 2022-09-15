@@ -35,7 +35,7 @@ const Payment=()=>{
     return(
         <div className="container">
         <CustHomeNv></CustHomeNv>
-  <section className="h-100 bg-dark" class="paymentStyle">
+  <section className="h-100 bg-dark" class="myStyle">
         <div class="fs-1 fw-bold" style={ {marginLeft:140,marginTop:20,textDecoration:Animation}}>PAYMENT PAGE</div>
        
         <form id="FORM" action='/CustomerHomePage'>

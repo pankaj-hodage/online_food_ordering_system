@@ -54,7 +54,7 @@ const SelectAddress=()=>{
     }
 
     return(
-      <div className="container">
+      <div className="container-fluid">
         <CustHomeNv></CustHomeNv>
           <div class="myStyle">
             <form id="FORM">
@@ -66,7 +66,7 @@ const SelectAddress=()=>{
                                          <div class="form-check"style={ {marginLeft:150,marginTop:20}}> 
         <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value={add.id}/>
         <label class="form-check-label" for="flexRadioDefault1">
-                                          <div>
+                                          <div class='my_text'>
                                             <div> {add.line1}, {add.line2},</div>
                                             <div>{add.city}, {add.state}, pin: {add.pincode}</div>
                                            <div> Mob:{add.contactNo}</div>

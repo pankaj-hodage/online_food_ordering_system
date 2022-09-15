@@ -34,7 +34,7 @@ const CustomerHome=()=>{
       }
 
       const allMenus=()=>{
-        axios.get(`${config.serverURL}/menu/allMenus`,).then((Response)=>{
+        axios.get(`${config.serverURL}/menu/allMenus`).then((Response)=>{
 
             const result = Response.data
 
@@ -63,9 +63,20 @@ const CustomerHome=()=>{
             }
         })
       }
+      const menuByCategory=(catId)=>{
 
-    
-const imgurl= config.serverURL+ '/' + 'vadapav.jpg'
+        axios.get(`${config.serverURL}/menu/allMenuByType/${catId}`).then((Response)=>{
+
+          const result = Response.data
+
+          if (result['status'] === 'success') {
+            console.log(result)
+            setMenu(result['data'])
+          } else {
+            toast.error('ERROR OCCURED...')
+          }
+      })
+      }
 
     return(
         <div className="container-fluid">
@@ -75,7 +86,7 @@ const imgurl= config.serverURL+ '/' + 'vadapav.jpg'
         category.map((cat)=>{
 
             return(
-                <button onClick={CustomerHome} type="submit" className="btn btn-outline-primary btn-lg" style={ {margin:20}}>{cat.name}</button>  
+                <button onClick={()=>menuByCategory(cat.id)} type="submit" className="btn btn-outline-primary btn-lg" style={ {margin:20}}>{cat.name}</button>  
             )
         })}
         </div>
@@ -107,7 +118,7 @@ const imgurl= config.serverURL+ '/' + 'vadapav.jpg'
               />
               <div style={{ marginTop: 20 }}>
                 <h5 className='card-title'>{m.productName}</h5>
-                <p>
+                <p >
                   {m.description} <br />
                   Rs. {m.price}
                 </p>
@@ -115,13 +126,13 @@ const imgurl= config.serverURL+ '/' + 'vadapav.jpg'
                <div className="col-sm-5"> 
               <label  className="form-label" for="form3Example97" 
                     >Qty</label>
-                    <input type="text" id="form3Example97" className="form-control form-control-lg" 
+                    <input type="text" id="form3Example97" className="form-control form-control-sm" 
                      onChange={(e)=>{
                       setQuantity(e.target.value)
                     }} />
                 </div  >
-               <div className="col-sm-12">
-                <button onClick={()=>addToCart(m.id)} type="button" className="btn btn-success">Add To Cart</button>
+               <div className="col-lg-12">
+                <button onClick={()=>addToCart(m.id)} type="button" className="btn btn-success btn-sm" style={{marginTop:5}}>Add To Cart</button>
                 </div>
             </div>    
          ) })}
