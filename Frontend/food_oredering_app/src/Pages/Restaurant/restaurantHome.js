@@ -1,6 +1,11 @@
+
+import RestoNav from './../../components/RestoNav';
+
 const RestaurantHome=()=>{
     return(
-        <h4>Restaurant Home </h4>
+        <div className="container-fluid">
+        <RestoNav/>
+        </div>
     )
 }
 

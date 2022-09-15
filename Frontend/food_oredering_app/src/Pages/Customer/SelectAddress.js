@@ -44,7 +44,7 @@ const SelectAddress=()=>{
         if (addId.length == 0) {
           toast.warning('please select address')
       } else{
-        sessionStorage.setItem("addressId" , addId)
+       // sessionStorage.setItem("addressId" , addId)
         navigate('/Payment', { state: { addressId: addId } })
       }
       

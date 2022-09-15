@@ -63,7 +63,7 @@ const AddAddress = () => {
       }
     }
 
-    const back=()=>{ navigate("/OrderDetails") }
+    const back=()=>{ navigate("/SelectAddress") }
     return (
         <section className="h-100 bg-dark" class="myStyle">
                   <h3 className="mb-5 text-uppercase" style={ {textAlign:'center'}}>ADDRESS </h3>

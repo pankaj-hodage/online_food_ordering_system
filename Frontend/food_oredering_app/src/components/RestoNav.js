@@ -15,7 +15,7 @@ const RestoNav=()=>{
 
 <div id="navbarSupportedContent" class="collapse navbar-collapse">
   <ul class="navbar-nav ml-auto">
-  <li class="nav-item"><a href="/RestoHomePage" class="nav-link">
+  <li class="nav-item"><a href="/restaurantHome" class="nav-link">
   <i class="fa fa-home" style={{fontSize:32 ,marginRight:20}}></i>
     </a></li>
     <li class="nav-item"><a href="/Products" class="nav-link">Products</a></li>

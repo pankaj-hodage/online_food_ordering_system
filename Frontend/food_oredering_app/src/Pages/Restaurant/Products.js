@@ -11,6 +11,7 @@ const Products=()=>{
     
     const[menuList,setMenuList]=useState([])
     const restoId=7//sessionStorage.getItem("userId")
+    const navigate = useNavigate()
 
     useEffect(() => {
         console.log(`menus loaded`)
@@ -29,6 +30,10 @@ const Products=()=>{
         
           }
         })
+    }
+    const editMenu=(menuId)=>{
+
+      navigate('/EditMenu', { state: { menuId: menuId } })
     }
 
     return(
@@ -58,7 +63,7 @@ const Products=()=>{
                                         <td>{menu.category.name}</td>
                                         <td>{status}</td>
                                         <td>{menu.price}</td>
-                                        <td> <button type="button" class="btn btn-warning btn-sm">EDIT</button>
+                                        <td> <button onClick={()=>editMenu(menu.id)} type="button" class="btn btn-warning btn-sm">EDIT</button>
                                         </td>
                                     </tr>
                                 )
@@ -68,7 +73,9 @@ const Products=()=>{
 
                       </tbody>
         </table>  
+        <Link to='/AddMenu'>
         <button type="button" class="btn btn-danger btn-sm" style={ {marginLeft:250,marginTop:30}}>ADD MENU</button>
+        </Link>
         </div>
         </section>
         </div>

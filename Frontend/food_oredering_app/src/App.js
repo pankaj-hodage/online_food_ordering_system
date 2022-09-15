@@ -20,11 +20,10 @@ import AddAddress from './Pages/Customer/AddAddress';
 import Cart from './Pages/Customer/Cart';
 import SelectAddress from './Pages/Customer/SelectAddress';
 import Payment from './Pages/Customer/Payment';
-import Products from './Pages/Restaurent/Products';
-import CustomerHome from './Pages/homePage/CustomerHome'
-
-
-
+import Products from './Pages/Restaurant/Products';
+import CustomerHome from './Pages/homePage/CustomerHome';
+import AddMenu from './Pages/Restaurant/AddMenu';
+import EditMenu from './Pages/Restaurant/EditMenu';
 
 
 
@@ -32,15 +31,11 @@ function App() {
   return (
     <div>
     <BrowserRouter>
-
-
-
 <Routes>
         <Route path='/'  element={<Home />} ></Route>
         <Route path='/signin'  element={<SignIn />} ></Route>
         <Route path='/signup'  element={<Signup />} ></Route>
-        <Route path='/forgotPassword'  element={<ForgotPassword />} ></Route>
-       
+        <Route path='/forgotPassword'  element={<ForgotPassword />} ></Route>       
         <Route path='/adminHome'  element={<AdminHome />} ></Route>
         <Route path='/restaurantHome'  element={<RestaurantHome />} ></Route>
         <Route path='/deliveryBoyHome'  element={<DeliveryBoyHome />} ></Route>
@@ -55,7 +50,9 @@ function App() {
         <Route exact path='/SelectAddress' element={<SelectAddress/>}/>
         <Route exact path='/Payment' element={<Payment/>}/>
         <Route exact path='/Products' element={<Products/>}/>
-    
+        <Route exact path='/AddMenu' element={<AddMenu/>}/>
+        <Route exact path='/EditMenu' element={<EditMenu/>}/>
+
     </Routes>
 
     {/* this container is used to show toast messages */}
