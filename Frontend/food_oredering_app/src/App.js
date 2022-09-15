@@ -56,7 +56,7 @@ function App() {
     </Routes>
 
     {/* this container is used to show toast messages */}
-    <ToastContainer position='top-center' autoClose={1000} />
+    <ToastContainer position='top-center' autoClose={2000} />
 
     </BrowserRouter>
 

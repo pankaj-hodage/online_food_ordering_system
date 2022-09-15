@@ -103,7 +103,7 @@ const AddMenu=()=>{
                 <div className="form-outline mb-4" >
                   <label  className="form-label" for="form3Example97" 
                     >price</label>
-                    <input type="text" id="form3Example97" className="form-control form-control-lg" 
+                    <input type="number" id="form3Example97" className="form-control form-control-lg" 
                      onChange={(e)=>{
                       setPrice(e.target.value)
                     }} />  

@@ -108,6 +108,12 @@ public class MenuController
 		return ResponseEntity.ok().body(new ResponseDto<List<Menu>>("success", menu));
 				
 	}
+	@GetMapping("/getById/{menuId}")
+	public ResponseEntity<?> getMenuById(@PathVariable int menuId){
+		Menu menu = menuService.getMenuDetails(menuId);
+		return ResponseEntity.ok().body(new ResponseDto<Menu>("success", menu));
+				
+	}
 
 	
 }
