@@ -38,7 +38,7 @@ const SignIn=()=>{
             
                     if (result.data.role === "CUSTOMER") {
     
-                        navigate('/customerHome')
+                        navigate('/CustomerHomePage')
                         toast.success('Welcome to foodies!!! enjoy every bite...')
                     }
                     else if (result.data.role === "ADMIN") {

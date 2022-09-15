@@ -1,7 +1,8 @@
+
 import SignIn from './Pages/User/SignIn/signin';
 import Home from './Pages/homePage/Home';
 import Signup from './Pages/User/SignUp/signup';
-import CustomerHome from './Pages/Customer/customerHome';
+
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -15,34 +16,53 @@ import DeliveryBoyList from './Pages/Admin/DeliveryBoylist/deliveryBoyList';
 import CustomerList from './Pages/Admin/CustomerList/customerList';
 import RestaurantList from './Pages/Admin/restaurantList/restaurantList';
 import GetRestaurantDetails from './Pages/Admin/restaurantList/getRestaurantDetails';
+import AddAddress from './Pages/Customer/AddAddress';
+import Cart from './Pages/Customer/Cart';
+import SelectAddress from './Pages/Customer/SelectAddress';
+import Payment from './Pages/Customer/Payment';
+import Products from './Pages/Restaurent/Products';
+import CustomerHome from './Pages/homePage/CustomerHome'
+
+
+
 
 
 
 function App() {
   return (
     <div>
+    <BrowserRouter>
 
-<BrowserRouter>
+
+
 <Routes>
-  <Route path='/'  element={<Home />} ></Route>
-  <Route path='/signin'  element={<SignIn />} ></Route>
-  <Route path='/signup'  element={<Signup />} ></Route>
-  <Route path='/forgotPassword'  element={<ForgotPassword />} ></Route>
-  <Route path='/customerHome'  element={<CustomerHome />} ></Route>
-  <Route path='/adminHome'  element={<AdminHome />} ></Route>
-  <Route path='/restaurantHome'  element={<RestaurantHome />} ></Route>
-  <Route path='/deliveryBoyHome'  element={<DeliveryBoyHome />} ></Route>
-  <Route path='/registerRestaurant'  element={<RegisterRestaurant />} ></Route>
-  <Route path='/deliveryBoyList'  element={<DeliveryBoyList />} ></Route>
-  <Route path='/customerList'  element={<CustomerList />} ></Route>
-  <Route path='/restaurantList'  element={<RestaurantList />} ></Route>
-  <Route path='/getRestaurantDetails'  element={<GetRestaurantDetails />} ></Route>
-  
-</Routes>
-<ToastContainer position='top-center' autoClose={1000} />
-</BrowserRouter>
-      
-     
+        <Route path='/'  element={<Home />} ></Route>
+        <Route path='/signin'  element={<SignIn />} ></Route>
+        <Route path='/signup'  element={<Signup />} ></Route>
+        <Route path='/forgotPassword'  element={<ForgotPassword />} ></Route>
+       
+        <Route path='/adminHome'  element={<AdminHome />} ></Route>
+        <Route path='/restaurantHome'  element={<RestaurantHome />} ></Route>
+        <Route path='/deliveryBoyHome'  element={<DeliveryBoyHome />} ></Route>
+        <Route path='/registerRestaurant'  element={<RegisterRestaurant />} ></Route>
+        <Route path='/deliveryBoyList'  element={<DeliveryBoyList />} ></Route>
+        <Route path='/customerList'  element={<CustomerList />} ></Route>
+        <Route path='/restaurantList'  element={<RestaurantList />} ></Route>
+        <Route path='/getRestaurantDetails'  element={<GetRestaurantDetails />} ></Route>
+        <Route exact path='/CustomerHomePage' element={<CustomerHome/>}/>
+        <Route exact path='/AddAddress' element={<AddAddress/>}/>
+        <Route exact path='/Cart' element={<Cart/>}/>
+        <Route exact path='/SelectAddress' element={<SelectAddress/>}/>
+        <Route exact path='/Payment' element={<Payment/>}/>
+        <Route exact path='/Products' element={<Products/>}/>
+    
+    </Routes>
+
+    {/* this container is used to show toast messages */}
+    <ToastContainer position='top-center' autoClose={1000} />
+
+    </BrowserRouter>
+
     </div>
   );
 }
