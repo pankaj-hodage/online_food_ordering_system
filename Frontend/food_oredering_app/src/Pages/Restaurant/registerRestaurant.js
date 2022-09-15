@@ -1,0 +1,216 @@
+import { Link } from 'react-router-dom'
+import Header from '../../components/header'
+import config from '../../config'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
+
+const RegisterRestaurant=()=>{
+
+   
+        // get user inputs
+
+        //   "name": "OMKAR",
+    //   "email": "OMKAR@gmail.com",
+    //   "contact": "9921261375",
+    //   "password": "OMKAR@123",
+    //   "role":"CUSTOMER"
+    const [name, setName] = useState('')
+    const [role, setRole] = useState('')
+    const [email, setEmail] = useState('')
+    const [contact, setContact] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+  
+    // this function is used to navigate from one component to another programmatically
+    // userNavigate() returns a function reference
+    const navigate = useNavigate()
+  
+    const signup = () => {
+      // check if user has really entered any value
+      if (name.length === 0) {
+        toast.error('please enter name')
+      } else if (email.length === 0) {
+        toast.error('please enter email')
+      } else if (contact.length === 0) {
+        toast.error('please enter phone number')
+      } else if (password.length === 0) {
+        toast.error('please enter password')
+      } else if (confirmPassword.length === 0) {
+        toast.error('please confirm password')
+      } else if (password !== confirmPassword) {
+        toast.error('password does not match')
+      }  else if (role.length === 0) {
+        toast.error('please select role')
+      }else {
+        // make the API call to check if user exists
+        axios
+          .post(config.serverURL + '/user/signup', {
+            name,
+            email,
+            contact,
+            password,
+            role
+
+          })
+          .then((response) => {
+              const result = response.data
+              
+            if (result['status'] == 'Success') {
+              toast.success('Successfully signed up new user')
+    
+              // navigate to the signin page
+              navigate('/signin')
+            } else {
+              toast.error(result['error'])
+            }
+            // // get the data returned by server
+            // const result = response.data
+  
+            // // check if user's authentication is successfull
+            // if (result.data.status === 'Success') {
+            //   toast.success('successfully registered a new user')
+  
+            //   // navigate to the singin page
+            //   navigate('/signin')
+            //   //toast.error('invalid email or password')
+            // } 
+            
+          })
+          // .catch((error) => {
+          //   console.log('error')
+          //   console.log(error)
+          //   toast.error('invalid email or password')
+          // })
+      }
+    }
+
+return(
+    <div>
+        <Header/>
+    <div style={{ marginTop: 70 , marginBottom:20}}>
+        
+  <div style={styles.container}>
+    <form>
+    <div className='mb-3'>
+      <label> Restaurant Name</label>
+      <input
+       onChange={(event) => {
+        setName(event.target.value)
+      }}
+        className='form-control'
+        type='text'
+        required=''
+      />
+    </div>
+
+    <div className='mb-3'>
+      <label>Phone Number</label>
+      <input
+        onChange={(event) => {
+            setContact(event.target.value)
+          }}
+        className='form-control'
+        type='tel'
+        required=''
+      />
+    </div>
+
+    <div className='mb-3'>
+      <label>Email</label>
+      <input
+         onChange={(event) => {
+            setEmail(event.target.value)
+          }}
+        className='form-control'
+        type='email'
+        required=''
+      />
+    </div>
+
+    <div className='mb-3'>
+      <label>Password</label>
+      <input
+        onChange={(event) => {
+            setPassword(event.target.value)
+          }}
+        className='form-control'
+        type='password'
+        required=''
+      />
+    </div>
+
+    <div className='mb-3'>
+      <label>Confirm Password</label>
+      <input
+        onChange={(event) => {
+            setConfirmPassword(event.target.value)
+          }}
+        className='form-control'
+        type='password'
+        required=''
+      />
+    </div>
+    <div className='mb-3'>
+    <label>Role</label>
+      <select className="form-select form-select mb-3" aria-label=".form-select-lg example"
+      required=''
+       onChange={(event) => {
+        setRole(event.target.value)
+      }}>
+        {/* <option selected>Select Role</option> */}
+        <option value="RESTAURANT">none</option>
+        <option value="RESTAURANT">Restaurant</option>
+       
+      </select>
+      
+    </div>
+
+    <div className='mb-3' style={{ marginTop: 40 }}>
+      <div>
+        Already have an account? <Link to='/signin'>Signin here</Link>
+      </div>
+      <button  onClick={signup} style={styles.signinButton} type="submit">
+        Signup
+      </button>
+    </div>
+    </form>
+  </div>
+</div>
+</div>
+)
+}
+
+const styles = {
+  container: {
+    width: 400,
+    height: 620,
+    padding: 20,
+    position: 'relative',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    margin: 'auto',
+    borderColor: '#5C41A8',
+    borderRadius: 10,
+    broderWidth: 1,
+    borderStyle: 'solid',
+    boxShadow: '1px 1px 20px 5px #C9C9C9',
+  },
+  signinButton: {
+    position: 'relative',
+    width: '100%',
+    height: 40,
+    backgroundColor: '#5C41A8',
+    color: 'white',
+    borderRadius: 5,
+    border: 'none',
+    marginTop: 10,
+  },
+}
+    
+
+export default RegisterRestaurant;

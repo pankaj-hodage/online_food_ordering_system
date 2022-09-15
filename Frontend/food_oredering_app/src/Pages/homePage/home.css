@@ -1,0 +1,58 @@
+
+/* .background{
+    
+    background-image: linear-gradient(45deg,#303f9f,#a2751f);
+    height: 550px;
+} */
+.logo{
+              color: #F7BC0F;
+             font-size: 40px; 
+             font-family:Arial, Helvetica, sans-serif;
+              /* margin-left: 0px; */
+              height: 50px;
+}
+
+
+.nav{
+    position: relative;
+    margin-top: 0;
+    margin-left: 820px;
+}
+.nav button{
+    background-color: white;  
+                       color: black;
+                       margin-right: 20px;
+                       box-shadow: 0px 4px 18px 3px rgba(0,0,0,0.38);
+}
+
+.d button{
+    background-color: #5C41A8;  
+                       color: white;
+                       margin-right: 20px;
+                       box-shadow: 0px 4px 18px 3px rgba(0,0,0,0.38);
+}
+
+.foodi{
+    font-size:80px ;
+                margin-left: 50px;
+                margin-top: 70px;
+}
+
+.foodi b{
+    color:#5C41A8 ;
+}
+
+.a{
+    margin-left: 50px;
+                    width: 500px;
+}
+
+.b button{
+    background-color:#5C41A8 ;
+    color: white;
+                    box-shadow:0px 4px 18px 3px rgba(0,0,0,0.38);
+}
+
+.p{
+    margin-top: 70px;
+}

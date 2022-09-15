@@ -40,7 +40,8 @@ public class RestaurentController
 	@GetMapping("/allRatings/{restId}")
 	public ResponseEntity<?> getAllRating(@PathVariable int restId)
 	{
-		return ResponseEntity.ok(restoService.getAllRatings(restId));
+		return ResponseEntity.ok().body(new ResponseDto<>("Success" ,restoService.getAllRatings(restId) ));
+				//ResponseEntity.ok(restoService.getAllRatings(restId));
 	}
 	
 	@GetMapping("/allMenus/{restId}")

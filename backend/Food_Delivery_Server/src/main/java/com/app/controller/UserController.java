@@ -37,15 +37,17 @@ public class UserController {
 	public ResponseEntity<?> SignUp(@RequestBody User user) {
 
 		System.out.println("in add new user " + user.getId());// id : null
-		return ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(user));
+		return ResponseEntity.ok().body(new ResponseDto<>("Success" ,userService.registerUser(user) ));
+				//ResponseEntity.status(HttpStatus.CREATED).body(userService.registerUser(user));
 
 	}
 	
-	@GetMapping("/signin")
+	@PostMapping("/signin")
 	public ResponseEntity<?> SignIn (@RequestBody LoginRequestDto request){
 		
 		System.out.println("in auth user "+request);
-		return ResponseEntity.ok().body(userService.authenticateUser(request));
+		return ResponseEntity.ok().body(new ResponseDto<>("Success" ,userService.authenticateUser(request) ));
+				//ResponseEntity.ok().body(userService.authenticateUser(request));
 		
 	}
 	
@@ -53,7 +55,8 @@ public class UserController {
 	public ResponseEntity<?> updateProfile(@RequestBody UserDetailsDto user, @PathVariable int userId) {
 
 		System.out.println("in updateProfile ");// id : null
-		return ResponseEntity.ok().body(userService.updateUserProfile(user, userId));
+		return ResponseEntity.ok().body(new ResponseDto<>("Success" ,userService.updateUserProfile(user, userId) ));
+				//ResponseEntity.ok().body(userService.updateUserProfile(user, userId));
 
 	}
 
@@ -69,7 +72,8 @@ public class UserController {
 	public ResponseEntity<?> forgotPassword(@RequestBody ForgotPasswordDto forgetPassword) {
 
 		System.out.println("in forgotPassword ");// id : null
-		return ResponseEntity.ok().body(userService.forgotPassword(forgetPassword));
+		return ResponseEntity.ok().body(new ResponseDto<>("Success" ,userService.forgotPassword(forgetPassword) ));
+				//ResponseEntity.ok().body(userService.forgotPassword(forgetPassword));
 
 	}
 	

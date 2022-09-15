@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.ResponseDto;
 import com.app.service.UserServiceImpl;
 
 @RestController
@@ -21,21 +22,24 @@ public class AdminController {
 	@GetMapping("/getAllCustomer")
 	public ResponseEntity<?> gatAllCustomer() {
 		
-		return ResponseEntity.ok(userService.getAllCustomer());
+		return ResponseEntity.ok().body(new ResponseDto<>("Success" ,userService.getAllCustomer()));
+				//ResponseEntity.ok(userService.getAllCustomer());
 		
 	}
 	
 	@GetMapping("/getAllDeliveryBoy")
 	public ResponseEntity<?> gatAllDeliveryBoy() {
 		
-		return ResponseEntity.ok(userService.getAllDeliveryBoy());
+		return ResponseEntity.ok().body(new ResponseDto<>("Success" ,userService.getAllDeliveryBoy() ));
+				//ResponseEntity.ok();
 		
 	}
 	
 	@GetMapping("/getAllRestaurant")
 	public ResponseEntity<?> gatAllRestaurants() {
 		
-		return ResponseEntity.ok(userService.getAllRestaurant());
+		return  ResponseEntity.ok().body(new ResponseDto<>("Success" ,userService.getAllRestaurant()));
+				//ResponseEntity.ok(userService.getAllRestaurant());
 		
 	}
 }
