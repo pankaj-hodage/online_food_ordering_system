@@ -27,13 +27,18 @@ const NavbarAdmin = () => {
             </li>
             <li class="nav-item">
               <a href="/restaurantList" class="nav-link">
-                Restaurant List
+                Restaurants
               </a>
             </li>
 
             <li class="nav-item">
               <a href="/deliveryBoyList" class="nav-link">
                 DeliveryBoy-List
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/Category" class="nav-link">
+                Categories
               </a>
             </li>
             <div class="mybtn-right" style={{ marginLeft: 700 }}>

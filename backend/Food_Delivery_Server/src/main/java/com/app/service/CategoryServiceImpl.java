@@ -24,7 +24,7 @@ public class CategoryServiceImpl implements ICategoryService {
 	
 
 		public List<Category> getAllMenuTypes() {
-			return catRepo.findAll();			
+			return catRepo.findAllAcending();			
 		}
 	
 

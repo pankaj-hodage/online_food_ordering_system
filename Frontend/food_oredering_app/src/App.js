@@ -26,6 +26,7 @@ import EditMenu from "./Pages/Restaurant/EditMenu";
 import ShowFeedbacks from "./Pages/Restaurant/ShowFeedbacks";
 import AddFeedback from "./Pages/Customer/AddFeedback";
 import MyOrders from "./Pages/Customer/MyOrders";
+import Category from "./Pages/Admin/Category";
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
           <Route exact path="/ShowFeedbacks" element={<ShowFeedbacks />} />
           <Route exact path="/AddFeedback" element={<AddFeedback />} />
           <Route exact path="/MyOrders" element={<MyOrders />} />
+          <Route exact path="/Category" element={<Category />} />
         </Routes>
 
         {/* this container is used to show toast messages */}

@@ -27,7 +27,7 @@ const Cart = () => {
     });
   };
   return (
-    <div className="container">
+    <div className="container-fluid">
       <CustHomeNv></CustHomeNv>
       <section className="h-100 bg-dark" class="myStyle">
         <div>

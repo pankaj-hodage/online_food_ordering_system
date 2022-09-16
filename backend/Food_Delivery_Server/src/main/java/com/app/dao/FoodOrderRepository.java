@@ -10,7 +10,7 @@ import com.app.entities.OrderStatus;
 
 public interface FoodOrderRepository extends JpaRepository<FoodOrder, Integer> {
 
-	@Query("Select o from FoodOrder o where o.customer.id=?1 order by o.deliveredTime desc")
+	@Query("Select o from FoodOrder o where o.customer.id=?1 order by o.orderTime desc")
 	List<FoodOrder> findAllOrdersByUserId(Integer Id);
 	
 	@Query("Select o from FoodOrder o where o.deliverboy.id=?1")
