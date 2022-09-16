@@ -1,6 +1,6 @@
 
 import RestoNav from './../../components/RestoNav';
-import resto from './sample2.jpg'
+import resto from './../../images/resto1.jpg'
 const RestaurantHome=()=>{
     return(
         <div className="container-fluid">

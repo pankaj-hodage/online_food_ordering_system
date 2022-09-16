@@ -25,6 +25,8 @@ import CustomerHome from './Pages/homePage/CustomerHome';
 import AddMenu from './Pages/Restaurant/AddMenu';
 import EditMenu from './Pages/Restaurant/EditMenu';
 import ShowFeedbacks from './Pages/Restaurant/ShowFeedbacks';
+import AddFeedback from './Pages/Customer/AddFeedback';
+
 
 function App() {
   return (
@@ -52,6 +54,7 @@ function App() {
         <Route exact path='/AddMenu' element={<AddMenu/>}/>
         <Route exact path='/EditMenu' element={<EditMenu/>}/>
         <Route exact path='/ShowFeedbacks' element={<ShowFeedbacks/>}/>
+        <Route exact path='/AddFeedback' element={<AddFeedback/>}/>
 
     </Routes>
 
