@@ -18,7 +18,7 @@ const AddAddress = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const id = 1; //sessionStorage.getItem("userId");
+    const id = sessionStorage.getItem("customerId");
 
     if (data !== undefined) {
       axios

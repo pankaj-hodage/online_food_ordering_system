@@ -31,54 +31,66 @@ const RestaurantList = () => {
   };
 
   const GetDetails = (id) => {
-    navigate("/getRestaurantDetails", { state: { userId: id } });
+    navigate("/getRestaurantDetails", { state: { restaurentId: id } });
   };
 
+  const GetMenu = (id) => {
+    navigate("/getRestaurantMenu", { state: { restaurentId: id } });
+  };
 
-    const GetMenu=(id)=>{
-      navigate('/getRestaurantMenu', { state: { restId: id} })
-  }
+  return (
+    <div className="container-fluid">
+      <NavbarAdmin></NavbarAdmin>
+      <header style={{ textAlign: "center", fontSize: 30 }}>
+        <b>Restaurants List</b>
+      </header>
+      <table
+        className="table table-responsive table-striped table-hover table-bordered"
+        style={{ marginTop: 60 }}
+      >
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">name</th>
 
-    return(
-    
-    <div className='container-fluid'>
-    <NavbarAdmin></NavbarAdmin>
-    <header style={{textAlign:"center",fontSize:30}}><b>Restaurants List</b></header>
-    <table className='table table-responsive table-striped table-hover table-bordered'
-     style={{marginTop:60}}>
-                        <thead>
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">name</th>
-                               
-                                <th scope="col">Email</th>
-                                <th scope="col">contact</th>
-                    
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {restaurantList.map((user) => {
-                               return(<tr>
-                                <td scope="col">{user.id}</td>
-                                <td scope="col">{user.name}</td>
-                               
-                                <td scope="col">{user.email}</td>
-                                <td scope="col">{user.contact}</td>
-                                <td><button 
-                                onClick={() => GetDetails(user.id)}
-                                className='btn' style={{backgroundColor:'#5C41A8', color:'white'}}>Review</button></td>
-                                <td><button 
-                                onClick={() => GetMenu(user.id)}
-                                className='btn' style={{backgroundColor:'#5C41A8', color:'white'}}>Menu</button></td>
-                            </tr>)
-                              })}
-                        </tbody>
-                            </table>
-</div>)
-}
+            <th scope="col">Email</th>
+            <th scope="col">contact</th>
+          </tr>
+        </thead>
+        <tbody>
+          {restaurantList.map((user) => {
+            return (
+              <tr>
+                <td scope="col">{user.id}</td>
+                <td scope="col">{user.name}</td>
 
- 
-   
-
+                <td scope="col">{user.email}</td>
+                <td scope="col">{user.contact}</td>
+                <td>
+                  <button
+                    onClick={() => GetDetails(user.id)}
+                    className="btn"
+                    style={{ backgroundColor: "#5C41A8", color: "white" }}
+                  >
+                    Review
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => GetMenu(user.id)}
+                    className="btn"
+                    style={{ backgroundColor: "#5C41A8", color: "white" }}
+                  >
+                    Menu
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default RestaurantList;

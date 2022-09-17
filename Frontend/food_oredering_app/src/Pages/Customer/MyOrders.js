@@ -9,7 +9,7 @@ import CustHomeNv from "../../components/CustHomeNv";
 const MyOrders = () => {
   const [orderList, setOrderList] = useState([]);
   const [orderDetailsList, setOrderDetailsList] = useState([]);
-  const userid = 1; //sessionStorage.getItem("userId")
+  const userid = sessionStorage.getItem("customerId");
 
   useEffect(() => {
     getOrderDetails();

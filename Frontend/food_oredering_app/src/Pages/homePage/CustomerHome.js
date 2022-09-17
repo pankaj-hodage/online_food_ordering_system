@@ -42,24 +42,27 @@ const CustomerHome = () => {
   };
   const addToCart = (id) => {
     console.log("incart method");
-    const userId = 1; //sessionStorage.getItem("userId");
+    const userId = sessionStorage.getItem("customerId");
+    if (quantity === 0) {
+      toast.warning("Enter Quantity to add into cart");
+    } else {
+      axios
+        .post(
+          `${config.serverURL}/cart/add`,
+          { menuId: id, userId: userId, quantity: quantity },
+          { "Content-Type": "application/json" }
+        )
+        .then((Response) => {
+          const result = Response.data;
 
-    axios
-      .post(
-        `${config.serverURL}/cart/add`,
-        { menuId: id, userId: userId, quantity: quantity },
-        { "Content-Type": "application/json" }
-      )
-      .then((Response) => {
-        const result = Response.data;
-
-        if (result["status"] === "success") {
-          console.log(result);
-          toast.success("menu added to cart");
-        } else {
-          toast.error("ERROR OCCURED...");
-        }
-      });
+          if (result["status"] === "success") {
+            console.log(result);
+            toast.success("menu added to cart");
+          } else {
+            toast.error("ERROR OCCURED...");
+          }
+        });
+    }
   };
   const menuByCategory = (catId) => {
     axios
@@ -109,10 +112,9 @@ const CustomerHome = () => {
               <img
                 alt="menu"
                 style={{
-
                   height: 200,
-                  width: '100%',
-                  display: 'block',
+                  width: "100%",
+                  display: "block",
 
                   borderRadius: 10,
                 }}
@@ -128,7 +130,6 @@ const CustomerHome = () => {
                 </p>
               </div>
 
-              
               <div className="col-sm-5">
                 <label className="form-label" for="form3Example97">
                   Qty
@@ -159,6 +160,5 @@ const CustomerHome = () => {
     </div>
   );
 };
-
 
 export default CustomerHome;
