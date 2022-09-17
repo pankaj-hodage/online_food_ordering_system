@@ -76,6 +76,7 @@ public class MenuServiceImpl implements IMenuService
 		List<Menu> menulist = menuRepo.findAllByResto(id);
 		return menulist;
 	}
+
 	
 	
 	

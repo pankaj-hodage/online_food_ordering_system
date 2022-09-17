@@ -57,7 +57,7 @@ public class OrderServiceImpl implements IOrderService {
 		List<Cart> cartItems = cartRepo.findAllItemsByUser(userId);
 		
 		double total = 0.0;
-		int deliveryCharges = 25;
+		int deliveryCharges = 50;
 		for (Cart item : cartItems) {
 			total += item.getQuantity() * item.getSelectedMenu().getPrice();
 		}
@@ -154,7 +154,7 @@ public class OrderServiceImpl implements IOrderService {
 
 	@Override
 	public List<FoodOrderDto> getAllAssignedOrders(int deliveryBoyId) {
-		List<FoodOrder> orders = foodOrderRepo.findAllOrdersByUserId(deliveryBoyId);
+		List<FoodOrder> orders = foodOrderRepo.findAllOrdersByDeliverBoyId(deliveryBoyId);
 
 		List<FoodOrderDto> response = new ArrayList<>();
 

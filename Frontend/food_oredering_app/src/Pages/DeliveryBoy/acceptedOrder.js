@@ -17,7 +17,7 @@ const AcceptedOrder=()=>{
     }, [])
   
     const getOrderList = () => {
-        const deliveryBoyId = 2 //sessionStorage.getItem("userId");
+        const deliveryBoyId = 3 //sessionStorage.getItem("userId");
       axios.get(  `${config.serverURL}/order/assigned/${deliveryBoyId}`).then((response) => {
         // setDeliveryBoyList = response.data
         const result=response.data
@@ -26,7 +26,8 @@ const AcceptedOrder=()=>{
         console.log(response.data)
         if (result.status === 'success') {
             setOrderList(result.data)
-            navigate('/acceptedOrder')
+           navigate('/acceptedOrder')
+            //window.location.reload();
         } else {
             toast.error('ERROR OCCURED...')
         }
@@ -42,7 +43,9 @@ const AcceptedOrder=()=>{
         console.log(orderList)
         console.log(response.data)
         if (result.status === 'success') {
+
             toast.success('Status Updated Successfully')
+            window.location.reload();
         } else {
             toast.error('ERROR OCCURED...')
         }
@@ -90,7 +93,8 @@ const AcceptedOrder=()=>{
                                         setStatus(event.target.value)
                                     }}>
                                     {/* <option selected>Select Role</option> */}
-                                    <option value="DELIVERED">select</option>
+                                    <option value="">select</option>
+                                    <option value="OUT_FOR_DELIVERY">Out_for_Delivery</option>
                                     <option value="DELIVERED">Delivered</option>
                                     <option value="CANCELLED">Cancelled</option>
                                     </select>

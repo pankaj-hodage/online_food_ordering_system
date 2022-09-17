@@ -1,18 +1,20 @@
 import NavbarAdmin from "../../components/navbarAdmin"
-import companylogo from "../../images/s2.jpg"
+import admin from './../../images/admin.jpg'
 const AdminHome=()=>{
     return(
         <div className="contaimer-fluid">
              <NavbarAdmin/>
-             <header style={{textAlign:"center",fontSize:30}}><b>Welcome Admin</b></header>
-             <div className="container" style={{alignContent:"center",
-             alignItems:"center",
-             marginLeft:120,
-             marginTop:30}}>
-                <img src={companylogo} alt="logo" style={{width:1000}}></img>
-             </div>
+
+             <img
+        style={{
+            height:'100%',
+            width: '100%',
+            display: 'block',
+            borderRadius: 10,
+          }}
+            src={admin}
+        />
         </div>
-       
        )
 }
 

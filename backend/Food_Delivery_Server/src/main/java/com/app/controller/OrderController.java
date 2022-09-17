@@ -58,7 +58,7 @@ public class OrderController {
 	// get all order of customer
 	@GetMapping("/myorders/{userId}")
 	public ResponseEntity<?> getMyOrders(@PathVariable int userId) {
-		return ResponseEntity.ok().body(orderService.getMyOrders(userId));
+		return ResponseEntity.ok().body(new ResponseDto<>("success", orderService.getMyOrders(userId)));
 	}
 
 	// update order status

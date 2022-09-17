@@ -1,3 +1,4 @@
+
 import NavbarDeliveryBoy from "../../components/navbarDeliveryBoy"
 import axios from "axios";
 import { useState, useEffect } from 'react'
@@ -30,7 +31,7 @@ const DeliveryBoyHome=()=>{
       })
     }
 
-    const GetMenu=(Id)=>{
+    const acceptOrder=(Id)=>{
         console.log("incart method")
         const deliveryBoyId = 3 //sessionStorage.getItem("userId");
 
@@ -42,8 +43,9 @@ const DeliveryBoyHome=()=>{
             if (result['status'] === 'success') {
               console.log(result)
               navigate('/deliveryBoyHome')
+
               toast.success('Order Accepted')
-             
+              // window.location.reload();
             } else {
               toast.error('ERROR OCCURED...')
             }
@@ -64,7 +66,7 @@ const DeliveryBoyHome=()=>{
                                 <th scope="col">contact</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Order Time</th>
-                                <th scope="col">status</th>
+                               
                     
                             </tr>
                         </thead>
@@ -79,9 +81,9 @@ const DeliveryBoyHome=()=>{
                                 <td scope="col">{order.address.contactNo}</td>
                                 <td scope="col">Rs : {order.totalPrice}</td>
                                 <td scope="col">{order.orderTime}</td>
-                                <td scope="col">{order.status}</td>
+                                
                                 <td><button 
-                                onClick={() => GetMenu(order.id)}
+                                onClick={() => acceptOrder(order.id)}
                                 className='btn' style={{backgroundColor:'#5C41A8', color:'white'}}>Accept Order</button></td>
                             </tr>)
                               })}
@@ -91,4 +93,6 @@ const DeliveryBoyHome=()=>{
     )
 }
 
-export default DeliveryBoyHome
+
+
+export default DeliveryBoyHome;

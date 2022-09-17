@@ -27,7 +27,7 @@ public class DeliveryServiceImpl implements IDeliveryService
 	@Override
 	public List<FoodOrder> allPlacedOrders() {
 	
-		return orderRepo.findByStatus(OrderStatus.PLACED);
+		return orderRepo.findByStatus(OrderStatus.ACCEPTED);
 	}
 	
 	@Override
@@ -35,7 +35,7 @@ public class DeliveryServiceImpl implements IDeliveryService
 		FoodOrder order = orderRepo.findById(orderId).get();
 		User user = userRepo.findById(userId).get();
 		order.setDeliverboy(user);
-		order.setStatus(OrderStatus.OUT_FOR_DELIVERY);
+		//order.setStatus(OrderStatus.OUT_FOR_DELIVERY);
 
 	}
 	

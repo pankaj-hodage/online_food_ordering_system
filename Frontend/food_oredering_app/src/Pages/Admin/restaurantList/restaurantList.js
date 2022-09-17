@@ -1,39 +1,39 @@
 import axios from "axios";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import config from "../../../config";
 import NavbarAdmin from "../../../components/navbarAdmin";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import GetRestaurantDetails from "./getRestaurantDetails";
-import { useNavigate } from 'react-router-dom'
-const RestaurantList=()=>{
+import { useNavigate } from "react-router-dom";
+const RestaurantList = () => {
+  const navigate = useNavigate();
+  const [restaurantList, setRestaurantList] = useState([]);
+  const [searchTerm, setsearchTerm] = useState("");
 
-    const navigate = useNavigate()
-    const [restaurantList, setRestaurantList] = useState([])
-    const [searchTerm, setsearchTerm]=useState("");
-  
-    useEffect(() => {
-      console.log(` is loaded`)
-      getRestaurantList()
-    }, [])
-  
-    const getRestaurantList = () => {
-      axios.get( config.serverURL + '/admin/getAllRestaurant').then((response) => {
-        // setDeliveryBoyList = response.data
-        const result=response.data
-        
-        console.log(restaurantList)
-        console.log(response.data)
-        if (result.status === 'Success') {
-            setRestaurantList(result.data)
-        } else {
-          alert('error while loading list of Restaurant List')
-        }
-      })
-    }
+  useEffect(() => {
+    console.log(` is loaded`);
+    getRestaurantList();
+  }, []);
 
-    const GetDetails=(id)=>{
-        navigate('/getRestaurantDetails', { state: { userId: id} })
-    }
+  const getRestaurantList = () => {
+    axios.get(config.serverURL + "/admin/getAllRestaurant").then((response) => {
+      // setDeliveryBoyList = response.data
+      const result = response.data;
+
+      console.log(restaurantList);
+      console.log(response.data);
+      if (result.status === "Success") {
+        setRestaurantList(result.data);
+      } else {
+        alert("error while loading list of Restaurant List");
+      }
+    });
+  };
+
+  const GetDetails = (id) => {
+    navigate("/getRestaurantDetails", { state: { userId: id } });
+  };
+
 
     const GetMenu=(id)=>{
       navigate('/getRestaurantMenu', { state: { restId: id} })
@@ -76,5 +76,9 @@ const RestaurantList=()=>{
                             </table>
 </div>)
 }
+
+ 
+   
+
 
 export default RestaurantList;

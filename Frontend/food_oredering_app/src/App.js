@@ -1,39 +1,38 @@
-
-import SignIn from './Pages/User/SignIn/signin';
-import Home from './Pages/homePage/Home';
-import Signup from './Pages/User/SignUp/signup';
-
+import SignIn from "./Pages/User/SignIn/signin";
+import Home from "./Pages/homePage/Home";
+import Signup from "./Pages/User/SignUp/signup";
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import ForgotPassword from './Pages/User/forgot_password/forgotPassword';
-import AdminHome from './Pages/Admin/adminHome';
-import RestaurantHome from './Pages/Restaurant/restaurantHome';
-import DeliveryBoyHome from './Pages/DeliveryBoy/deliveryBoyHome';
-import RegisterRestaurant from './Pages/Restaurant/registerRestaurant';
-import DeliveryBoyList from './Pages/Admin/DeliveryBoylist/deliveryBoyList';
-import CustomerList from './Pages/Admin/CustomerList/customerList';
-import RestaurantList from './Pages/Admin/restaurantList/restaurantList';
-import GetRestaurantDetails from './Pages/Admin/restaurantList/getRestaurantDetails';
-import AddAddress from './Pages/Customer/AddAddress';
-import Cart from './Pages/Customer/Cart';
-import SelectAddress from './Pages/Customer/SelectAddress';
-import Payment from './Pages/Customer/Payment';
-import Products from './Pages/Restaurent/Products';
-import CustomerHome from './Pages/homePage/CustomerHome'
 import GetRestaurantMenu from './Pages/Admin/restaurantList/getRestaurantMenu';
 import AcceptedOrder from './Pages/DeliveryBoy/acceptedOrder';
 import UpdateProfile from './Pages/User/UpdateProfile/updateProfile';
-
-
-
-
-
+import ForgotPassword from "./Pages/User/forgot_password/forgotPassword";
+import AdminHome from "./Pages/Admin/adminHome";
+import RestaurantHome from "./Pages/Restaurant/restaurantHome";
+import DeliveryBoyHome from "./Pages/DeliveryBoy/deliveryBoyHome";
+import RegisterRestaurant from "./Pages/Restaurant/registerRestaurant";
+import DeliveryBoyList from "./Pages/Admin/DeliveryBoylist/deliveryBoyList";
+import CustomerList from "./Pages/Admin/CustomerList/customerList";
+import RestaurantList from "./Pages/Admin/restaurantList/restaurantList";
+import GetRestaurantDetails from "./Pages/Admin/restaurantList/getRestaurantDetails";
+import AddAddress from "./Pages/Customer/AddAddress";
+import Cart from "./Pages/Customer/Cart";
+import SelectAddress from "./Pages/Customer/SelectAddress";
+import Payment from "./Pages/Customer/Payment";
+import Products from "./Pages/Restaurant/Products";
+import CustomerHome from "./Pages/homePage/CustomerHome";
+import AddMenu from "./Pages/Restaurant/AddMenu";
+import EditMenu from "./Pages/Restaurant/EditMenu";
+import ShowFeedbacks from "./Pages/Restaurant/ShowFeedbacks";
+import AddFeedback from "./Pages/Customer/AddFeedback";
+import MyOrders from "./Pages/Customer/MyOrders";
+import Category from "./Pages/Admin/Category";
 
 function App() {
   return (
     <div>
+
     <BrowserRouter>
 
 
@@ -60,14 +59,18 @@ function App() {
         <Route exact path='/SelectAddress' element={<SelectAddress/>}/>
         <Route exact path='/Payment' element={<Payment/>}/>
         <Route exact path='/Products' element={<Products/>}/>
-    
+          <Route exact path="/AddMenu" element={<AddMenu />} />
+          <Route exact path="/EditMenu" element={<EditMenu />} />
+          <Route exact path="/ShowFeedbacks" element={<ShowFeedbacks />} />
+          <Route exact path="/AddFeedback" element={<AddFeedback />} />
+          <Route exact path="/MyOrders" element={<MyOrders />} />
+          <Route exact path="/Category" element={<Category />} />
     </Routes>
 
-    {/* this container is used to show toast messages */}
-    <ToastContainer position='top-center' autoClose={1000} />
 
-    </BrowserRouter>
-
+        {/* this container is used to show toast messages */}
+        <ToastContainer position="top-center" autoClose={1500} />
+      </BrowserRouter>
     </div>
   );
 }

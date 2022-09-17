@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 const NavbarDeliveryBoy=()=>{
     return(
         <nav 
-        className="navbar navbar-expand-lg navbar-dark'">
+        className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
   <div className="container-fluid">
   <a className="navbar-brand" href="/deliveryBoyHome"><b style={{color:'#F7BC0F', fontSize:30}}>Foodie</b></a>
     <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>

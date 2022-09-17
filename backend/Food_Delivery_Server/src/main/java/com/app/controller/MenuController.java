@@ -53,14 +53,15 @@ public class MenuController
 	public ResponseEntity<?> save( AddMenuDto dto)
 	{
 		
-		System.out.println( " orig file name " + dto.getImageName().getOriginalFilename());
+		//System.out.println( " orig file name " + dto.getImageName().getOriginalFilename());
+		System.out.println(dto.getRestaurent());
 		Menu menu=AddMenuDto.toEntity(dto);
 		menu.setRestaurant(userService.getUserDetails(dto.getRestaurent()));
 		menu.setCategory(catRepo.findById(dto.getCatagory()).get());
 		
 		menu = menuService.addMenu(menu,dto.getImageName());
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body("menu created");
+		return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto<>("Success" ,menu ));
 		
 	}
 	
@@ -105,6 +106,12 @@ public class MenuController
 	public ResponseEntity<?> menuByResto(@PathVariable int restoId){
 		List<Menu> menu = menuService.findByResto(restoId);
 		return ResponseEntity.ok().body(new ResponseDto<List<Menu>>("success", menu));
+				
+	}
+	@GetMapping("/getById/{menuId}")
+	public ResponseEntity<?> getMenuById(@PathVariable int menuId){
+		Menu menu = menuService.getMenuDetails(menuId);
+		return ResponseEntity.ok().body(new ResponseDto<Menu>("success", menu));
 				
 	}
 

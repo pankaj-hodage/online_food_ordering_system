@@ -42,8 +42,8 @@ const RegisterRestaurant=()=>{
         toast.error('please confirm password')
       } else if (password !== confirmPassword) {
         toast.error('password does not match')
-      }  else if (role.length === 0) {
-        toast.error('please select role')
+      // }  else if (role.length === 0) {
+      //   toast.error('please select role')
       }else {
         // make the API call to check if user exists
         axios
@@ -52,7 +52,7 @@ const RegisterRestaurant=()=>{
             email,
             contact,
             password,
-            role
+            role:'RESTAURANT'
 
           })
           .then((response) => {
@@ -153,7 +153,7 @@ return(
         required=''
       />
     </div>
-    <div className='mb-3'>
+    {/* <div className='mb-3'>
     <label>Role</label>
       <select className="form-select form-select mb-3" aria-label=".form-select-lg example"
       required=''
@@ -161,12 +161,12 @@ return(
         setRole(event.target.value)
       }}>
         {/* <option selected>Select Role</option> */}
-        <option value="RESTAURANT">none</option>
+        {/* <option value="RESTAURANT">none</option>
         <option value="RESTAURANT">Restaurant</option>
        
       </select>
       
-    </div>
+    </div>  */}
 
     <div className='mb-3' style={{ marginTop: 40 }}>
       <div>
