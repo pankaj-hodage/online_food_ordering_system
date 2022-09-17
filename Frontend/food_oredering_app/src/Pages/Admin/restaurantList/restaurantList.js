@@ -35,13 +35,15 @@ const RestaurantList=()=>{
         navigate('/getRestaurantDetails', { state: { userId: id} })
     }
 
+    const GetMenu=(id)=>{
+      navigate('/getRestaurantMenu', { state: { restId: id} })
+  }
+
     return(
     
     <div className='container-fluid'>
     <NavbarAdmin></NavbarAdmin>
-    <div style={{textAlign:'center'}}>
-        <h4>Restaurant Reviews</h4>
-    </div>
+    <header style={{textAlign:"center",fontSize:30}}><b>Restaurants List</b></header>
     <table className='table table-responsive table-striped table-hover table-bordered'
      style={{marginTop:60}}>
                         <thead>
@@ -65,6 +67,9 @@ const RestaurantList=()=>{
                                 <td><button 
                                 onClick={() => GetDetails(user.id)}
                                 className='btn' style={{backgroundColor:'#5C41A8', color:'white'}}>Review</button></td>
+                                <td><button 
+                                onClick={() => GetMenu(user.id)}
+                                className='btn' style={{backgroundColor:'#5C41A8', color:'white'}}>Menu</button></td>
                             </tr>)
                               })}
                         </tbody>

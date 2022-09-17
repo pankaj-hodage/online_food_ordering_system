@@ -30,9 +30,7 @@ const CustomerList=()=>{
     
     <div className='container-fluid'>
     <NavbarAdmin></NavbarAdmin>
-    <div style={{textAlign:'center'}}>
-        <h4>Customer List</h4>
-    </div>
+    <header style={{textAlign:"center",fontSize:30}}><b>Customer List</b></header>
     <table className='table table-responsive table-striped table-hover table-bordered'
      style={{marginTop:60}}>
                         <thead>

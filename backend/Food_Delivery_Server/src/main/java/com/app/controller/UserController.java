@@ -64,7 +64,8 @@ public class UserController {
 	public ResponseEntity<?> getDetails (@PathVariable int userId){
 		
 		System.out.println("in  user details ");
-		return ResponseEntity.ok().body(userService.getUserDetails(userId));
+		return ResponseEntity.ok().body(new ResponseDto<>("success" ,userService.getUserDetails(userId) ));
+				//ResponseEntity.ok().body(userService.getUserDetails(userId));
 		
 	}
 	

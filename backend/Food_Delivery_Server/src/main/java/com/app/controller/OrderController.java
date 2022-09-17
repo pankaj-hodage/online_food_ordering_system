@@ -51,7 +51,8 @@ public class OrderController {
 	// all order assigned to delivery boy
 	@GetMapping("/assigned/{deliverBoyId}")
 	public ResponseEntity<?> getAssignedOrders(@PathVariable int deliverBoyId) {
-		return ResponseEntity.ok().body(orderService.getAllAssignedOrders(deliverBoyId));
+		return ResponseEntity.ok().body(new ResponseDto<>("success" ,orderService.getAllAssignedOrders(deliverBoyId)));
+				//ResponseEntity.ok().body(orderService.getAllAssignedOrders(deliverBoyId));
 	}
 
 	// get all order of customer

@@ -6,7 +6,7 @@ const CustHomeNv=()=>{
   
    return(
         
-    <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm" >
 <div class="container">
 <a href="#" class="navbar-brand" >
   {/* <span class="text-uppercase font-weight-bold">Availbale !!!</span> */}
@@ -56,7 +56,7 @@ const CustHomeNv=()=>{
 </button>
 <ul class="dropdown-menu dropdown-menu-end">
 
-<li><a class="dropdown-item" href="/UpdateProfile">Update Profile</a></li>
+<li><a class="dropdown-item" href="/updateProfile">Update Profile</a></li>
 <li><a class="dropdown-item" href="/signin">Log Out</a></li>
 
 

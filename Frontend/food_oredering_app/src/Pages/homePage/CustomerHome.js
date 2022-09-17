@@ -96,7 +96,7 @@ const imgurl= config.serverURL+ '/' + 'vadapav.jpg'
              <img
                 alt='menu'
                 style={{
-                  height: 250,
+                  height: 200,
                   width: '100%',
                   display: 'block',
                   borderRadius: 10,
@@ -115,10 +115,11 @@ const imgurl= config.serverURL+ '/' + 'vadapav.jpg'
                <div className="col-sm-5"> 
               <label  className="form-label" for="form3Example97" 
                     >Qty</label>
-                    <input type="text" id="form3Example97" className="form-control form-control-lg" 
+                    <input type="number" id="form3Example97" className="form-control form-control-lg" 
                      onChange={(e)=>{
                       setQuantity(e.target.value)
-                    }} />
+                    }}
+                    style={{marginBottom:10}} />
                 </div  >
                <div className="col-sm-12">
                 <button onClick={()=>addToCart(m.id)} type="button" className="btn btn-success">Add To Cart</button>

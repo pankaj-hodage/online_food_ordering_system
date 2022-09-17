@@ -27,7 +27,8 @@ public class DeliveryController
 	@GetMapping("/placedOrders")
 	public ResponseEntity<?> getAllOrders()
 	{
-		return ResponseEntity.ok().body(deliveryService.allPlacedOrders());
+		return new ResponseEntity<>(new ResponseDto<>("success",deliveryService.allPlacedOrders()),HttpStatus.OK);
+				//ResponseEntity.ok().body(deliveryService.allPlacedOrders());
 	}
 	
 //	@PutMapping("/assign/{userId}")

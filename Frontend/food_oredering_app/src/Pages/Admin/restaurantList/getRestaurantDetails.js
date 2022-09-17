@@ -23,7 +23,6 @@ const GetRestaurantDetails=()=>{
         axios.get( config.serverURL + '/resto/allRatings/'+id).then((response) => {
             // setDeliveryBoyList = response.data
             const result=response.data
-            
             console.log(result)
             // console.log(response.data)
             if (result.status == 'Success') {
