@@ -101,7 +101,7 @@ const AcceptedOrder=()=>{
                                 </td>
                                 <td><button 
                                 onClick={() => UpdateStatus(order.order.id)}
-                                className='btn' style={{backgroundColor:'#5C41A8', color:'white'}}>Update Status</button></td>
+                                className='btn' style={{backgroundColor:'#5C41A8', color:'white'}}>Update</button></td>
                             </tr>)
                               })}
                         </tbody>

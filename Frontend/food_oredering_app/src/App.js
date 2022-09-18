@@ -28,6 +28,8 @@ import ShowFeedbacks from "./Pages/Restaurant/ShowFeedbacks";
 import AddFeedback from "./Pages/Customer/AddFeedback";
 import MyOrders from "./Pages/Customer/MyOrders";
 import Category from "./Pages/Admin/Category";
+import AllOrders from "./Pages/Restaurant/allOrders";
+import AllAcceptedOrders from "./Pages/Restaurant/allAcceptedOrders";
 
 function App() {
   return (
@@ -65,6 +67,8 @@ function App() {
           <Route exact path="/AddFeedback" element={<AddFeedback />} />
           <Route exact path="/MyOrders" element={<MyOrders />} />
           <Route exact path="/Category" element={<Category />} />
+          <Route exact path="/allOrders" element={<AllOrders />} />
+          <Route exact path="/allAcceptedOrders" element={<AllAcceptedOrders />} />
     </Routes>
 
 

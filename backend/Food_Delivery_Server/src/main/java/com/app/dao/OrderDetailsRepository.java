@@ -17,4 +17,9 @@ public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Inte
 	@Query("Select o from OrderDetails o join fetch o.currentOrder  join fetch o.selectedProduct where o.currentOrder.status=?1 and o.selectedProduct.restaurant.id=?2")
 	List<OrderDetails> getPlacedOrders(OrderStatus status,Integer restId);
 	
+	
+	@Query("Select o from OrderDetails o join fetch o.currentOrder  join fetch o.selectedProduct where o.currentOrder.status!=?1 and o.selectedProduct.restaurant.id=?2 order by o.currentOrder.orderTime desc")
+	
+	List<OrderDetails> getAcceptedOrders(OrderStatus status,Integer restId);
+	
 }

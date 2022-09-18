@@ -121,18 +121,22 @@ const CustomerHome = () => {
                 src={config.serverURL + "/" + m.image}
               />
               <div style={{ marginTop: 20 }}>
-                <h5 className="card-title">{m.productName}</h5>
+                <h5 className="card-title">{m.productName} <span><h6>({m.restaurant.name})</h6></span></h5>
+               
                 <p>
                   {m.description} <br />
                   Rs. {m.price}
                 </p>
               </div>
 
-              
-              <div className="col-sm-5">
+              <div className="col">
                 <label className="form-label" for="form3Example97">
                   Qty
                 </label>
+                </div>
+              <div className="row">
+              
+                <div className="col">
                 <input
                   type="text"
                   id="form3Example97"
@@ -142,7 +146,7 @@ const CustomerHome = () => {
                   }}
                 />
               </div>
-              <div className="col-lg-12">
+              <div className="col">
                 <button
                   onClick={() => addToCart(m.id)}
                   type="button"
@@ -151,6 +155,7 @@ const CustomerHome = () => {
                 >
                   Add To Cart
                 </button>
+              </div>
               </div>
             </div>
           );

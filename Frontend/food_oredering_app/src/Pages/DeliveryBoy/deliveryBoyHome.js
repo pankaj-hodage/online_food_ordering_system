@@ -84,7 +84,7 @@ const DeliveryBoyHome=()=>{
                                 
                                 <td><button 
                                 onClick={() => acceptOrder(order.id)}
-                                className='btn' style={{backgroundColor:'#5C41A8', color:'white'}}>Accept Order</button></td>
+                                className='btn' style={{backgroundColor:'#5C41A8', color:'white'}}>Accept</button></td>
                             </tr>)
                               })}
                         </tbody>

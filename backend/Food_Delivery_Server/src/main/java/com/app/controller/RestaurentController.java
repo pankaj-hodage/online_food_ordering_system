@@ -28,7 +28,15 @@ public class RestaurentController
 	@GetMapping("/allOrders/{restId}")
 	public ResponseEntity<?> getAllOrders(@PathVariable int restId)
 	{
-		return ResponseEntity.ok(restoService.getAllPlacedOrders(restId));
+		return new ResponseEntity<>(new ResponseDto<>("success",restoService.getAllPlacedOrders(restId)),HttpStatus.OK);
+				//ResponseEntity.ok(restoService.getAllPlacedOrders(restId));
+	}
+	
+	@GetMapping("/allAcceptedOrders/{restId}")
+	public ResponseEntity<?> getAllAcceptedOrders(@PathVariable int restId)
+	{
+		return new ResponseEntity<>(new ResponseDto<>("success",restoService.getAllAcceptedOrders(restId)),HttpStatus.OK);
+				//ResponseEntity.ok(restoService.getAllPlacedOrders(restId));
 	}
 	
 	@PutMapping("/updateStatus/{orderId}/{status}")

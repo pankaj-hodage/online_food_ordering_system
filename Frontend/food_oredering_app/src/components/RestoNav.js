@@ -31,9 +31,16 @@ const RestoNav = () => {
               </a>
             </li>
             <li class="nav-item">
-              <a href="/Orders" class="nav-link">
-                Orders
-              </a>
+            <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Orders
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="/allOrders">New Orders</a></li>
+            <li><a class="dropdown-item" href="/allAcceptedOrders">Accepted Orders</a></li>
+            
+          </ul>
+        </li>
             </li>
 
             {/* <li class="nav-item"><a href="/updateprofile" class="nav-link">Update Profile</a></li> */}

@@ -35,6 +35,17 @@ public class RestaurentServiceImpl implements IRestaurentService
 		return orderDetailsRepo.getPlacedOrders( OrderStatus.PLACED, restId);
 		
 	}
+	
+	
+	@Override
+	public List<OrderDetails> getAllAcceptedOrders(int restId) {
+		
+		
+		
+		return orderDetailsRepo.getAcceptedOrders( OrderStatus.PLACED, restId);
+	}
+
+
 	@Override
 	public List<Rating> getAllRatings(int restId)
 	{
