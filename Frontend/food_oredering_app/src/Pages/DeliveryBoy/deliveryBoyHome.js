@@ -1,56 +1,59 @@
-
-import NavbarDeliveryBoy from "../../components/navbarDeliveryBoy"
+import NavbarDeliveryBoy from "../../components/navbarDeliveryBoy";
 import axios from "axios";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import config from "../../config";
-import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
-const DeliveryBoyHome=()=>{
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+const DeliveryBoyHome = () => {
+  let navigate = useNavigate();
+  const [orderList, setOrderList] = useState([]);
+  const [searchTerm, setsearchTerm] = useState("");
 
-    let navigate = useNavigate();
-    const [orderList, setOrderList] = useState([])
-    const [searchTerm, setsearchTerm]=useState("");
-  
-    useEffect(() => {
-      console.log(` is loaded`)
-      getOrderList()
-    }, [])
-  
-    const getOrderList = () => {
-      axios.get( config.serverURL + '/delivery/placedOrders').then((response) => {
-        // setDeliveryBoyList = response.data
-        const result=response.data
-        
-        console.log(orderList)
-        console.log(response.data)
-        if (result.status === 'success') {
-            setOrderList(result.data)
+  useEffect(() => {
+    console.log(` is loaded`);
+    getOrderList();
+  }, []);
+
+  const getOrderList = () => {
+    axios.get(config.serverURL + "/delivery/placedOrders").then((response) => {
+      // setDeliveryBoyList = response.data
+      const result = response.data;
+
+      console.log(orderList);
+      console.log(response.data);
+      if (result.status === "success") {
+        setOrderList(result.data);
+      } else {
+        alert("error while loading list of OrderList");
+      }
+    });
+  };
+
+  const acceptOrder = (Id) => {
+    console.log("incart method");
+    const deliveryBoyId = sessionStorage.getItem("deliveryBoyId");
+
+    axios
+      .put(
+        `${config.serverURL}/delivery/update`,
+        { orderId: Id, userId: deliveryBoyId },
+        { "Content-Type": "application/json" }
+      )
+      .then((Response) => {
+        const result = Response.data;
+
+        if (result["status"] === "success") {
+          console.log(result);
+          navigate("/deliveryBoyHome");
+
+          toast.success("Order Accepted");
+          // window.location.reload();
         } else {
-          alert('error while loading list of OrderList')
+          toast.error("ERROR OCCURED...");
         }
-      })
-    }
-
-    const acceptOrder=(Id)=>{
-        console.log("incart method")
-        const deliveryBoyId = 3 //sessionStorage.getItem("userId");
-
-        axios.put(`${config.serverURL}/delivery/update`,{"orderId" :Id,"userId" :deliveryBoyId
-        },{"Content-Type": "application/json"}).then((Response)=>{
-
-            const result = Response.data
-
-            if (result['status'] === 'success') {
-              console.log(result)
-              navigate('/deliveryBoyHome')
-
-              toast.success('Order Accepted')
-              // window.location.reload();
-            } else {
-              toast.error('ERROR OCCURED...')
-            }
-        })
-    }
+      });
+  };
+ 
     return(
        <div className="container-fluid">
         <NavbarDeliveryBoy></NavbarDeliveryBoy>
@@ -92,7 +95,6 @@ const DeliveryBoyHome=()=>{
        </div>
     )
 }
-
 
 
 export default DeliveryBoyHome;

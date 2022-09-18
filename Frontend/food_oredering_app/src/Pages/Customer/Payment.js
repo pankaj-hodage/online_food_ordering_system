@@ -6,8 +6,8 @@ import config from "../../config";
 import { toast } from "react-toastify";
 
 const Payment = () => {
-  const userId = 1; //sessionStorage.getItem("userId")
-  // const addressId=2//sessionStorage.getItem("addressId")
+  const userId = sessionStorage.getItem("customerId");
+
   const location = useLocation();
   const navigate = useNavigate();
   const { addressId } = location.state;
@@ -77,7 +77,7 @@ const Payment = () => {
               type="radio"
               name="paymentMode"
               id="flexRadioDefault1"
-              value="DEBIT_CARDOD"
+              value="DEBIT_CARD"
             />
             <label class="form-check-label" for="flexRadioDefault1">
               <h5>DEBIT CARD</h5>{" "}

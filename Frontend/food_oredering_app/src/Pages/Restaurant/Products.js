@@ -8,7 +8,7 @@ import "./Resto.css";
 
 const Products = () => {
   const [menuList, setMenuList] = useState([]);
-  const restoId = 7; //sessionStorage.getItem("userId")
+  const restoId = sessionStorage.getItem("restaurentId");
   const navigate = useNavigate();
 
   useEffect(() => {

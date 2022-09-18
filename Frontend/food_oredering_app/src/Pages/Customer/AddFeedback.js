@@ -12,7 +12,7 @@ const AddFeedback = () => {
   const [restId, setRestaurantId] = useState("");
   const [restaurantList, setRestaurantList] = useState([]);
 
-  const userId = 1; //sessionStorage.getItem("userId");
+  const userId = sessionStorage.getItem("customerId");
   const navigate = useNavigate();
 
   useEffect(() => {

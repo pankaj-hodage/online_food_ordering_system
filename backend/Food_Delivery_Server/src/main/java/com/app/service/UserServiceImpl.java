@@ -30,6 +30,7 @@ public class UserServiceImpl implements IUserService {
 	public User updateUserProfile(UserDetailsDto userDto, int userId) {
 		User user=userRepo.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid User !!! Can not upadate details"));
+		System.out.println(userDto);
 		user.setContact(userDto.getContact_no());
 		user.setEmail(userDto.getEmail());
 		user.setName(userDto.getName());

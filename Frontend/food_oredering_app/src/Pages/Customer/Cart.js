@@ -8,7 +8,7 @@ import CustHomeNv from "./../../components/CustHomeNv";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
-  const userid = 1; //sessionStorage.getItem("userId")
+  const userid = sessionStorage.getItem("customerId");
 
   useEffect(() => {
     console.log(`Cart is loaded`);
@@ -26,6 +26,20 @@ const Cart = () => {
       }
     });
   };
+  const removeItem = (cartId) => {
+    axios
+      .delete(`${config.serverURL}/cart/delete/${cartId}`)
+      .then((response) => {
+        const result = response.data;
+        if (result.status === "success") {
+          toast.success(result.data);
+          window.location.reload();
+        } else {
+          toast.error("error while deleteing cart");
+        }
+      });
+  };
+
   return (
     <div className="container-fluid">
       <CustHomeNv></CustHomeNv>
@@ -40,6 +54,7 @@ const Cart = () => {
                 <th scope="col">Qty</th>
                 <th scope="col">Price</th>
                 <th scope="col">Total Price</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -51,6 +66,16 @@ const Cart = () => {
                     <td>{cart.quantity}</td>
                     <td>{cart.selectedMenu.price}</td>
                     <td>{cart.selectedMenu.price * cart.quantity}</td>
+                    <td>
+                      <button
+                        onClick={() => removeItem(cart.id)}
+                        type="button"
+                        className="btn btn-danger btn-sm"
+                        style={{ marginTop: 5 }}
+                      >
+                        remove
+                      </button>
+                    </td>
                   </tr>
                 );
               })}

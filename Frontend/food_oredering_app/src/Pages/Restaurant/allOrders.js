@@ -17,7 +17,7 @@ const AllOrders=()=>{
     }, [])
   
     const getOrderList = () => {
-        const id=1 //session.id
+        const id=sessionStorage.getItem("restaurentId");
       axios.get( config.serverURL + '/resto/allOrders/'+id).then((response) => {
         // setDeliveryBoyList = response.data
         const result=response.data
@@ -34,7 +34,7 @@ const AllOrders=()=>{
 
     const acceptOrder=(Id)=>{
         console.log("incart method")
-        // const restId = 3 //sessionStorage.getItem("userId");
+        
 
         axios.put( config.serverURL +'/resto/updateStatus/'+Id+'/ACCEPTED').then((Response)=>{
 

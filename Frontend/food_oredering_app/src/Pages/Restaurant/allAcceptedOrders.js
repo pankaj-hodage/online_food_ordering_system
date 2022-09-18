@@ -17,7 +17,7 @@ const AllAcceptedOrders=()=>{
     }, [])
   
     const getOrderList = () => {
-        const id=1 //session.id
+        const id=sessionStorage.getItem("restaurentId");
       axios.get( config.serverURL + '/resto/allAcceptedOrders/'+id).then((response) => {
         // setDeliveryBoyList = response.data
         const result=response.data
@@ -79,6 +79,7 @@ const AllAcceptedOrders=()=>{
                             <td scope="col"><p>{order.currentOrder.address.line1},{order.currentOrder.address.line2},
                             {order.currentOrder.address.city},{order.currentOrder.address.state} {order.currentOrder.address.pincode}</p></td>
                             <td scope="col">{order.currentOrder.address.contactNo}</td>
+                            
                             <td scope="col">{order.selectedProduct.productName}</td>
                             <td scope="col">{order.quantity}</td>
                             <td scope="col">{order.currentOrder.orderTime}</td>
