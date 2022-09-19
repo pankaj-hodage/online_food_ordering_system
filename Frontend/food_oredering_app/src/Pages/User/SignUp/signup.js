@@ -4,6 +4,7 @@ import config from "../../../config";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import validator from "validator";
 import axios from "axios";
 const Signup = () => {
   const [name, setName] = useState("");
@@ -12,11 +13,35 @@ const Signup = () => {
   const [contact, setContact] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('')
 
   // this function is used to navigate from one component to another programmatically
   // userNavigate() returns a function reference
   const navigate = useNavigate();
 
+  const validate = (value) => {
+ 
+    if (validator.isStrongPassword(value, {
+      minLength: 8, minLowercase: 1,
+      minUppercase: 1, minNumbers: 1, minSymbols: 1
+    })) {
+      setPassword(value);
+      setErrorMessage('Is Strong Password')
+    } else {
+      setErrorMessage('Is Not Strong Password')
+    }
+  }
+  const validateEmail = (e) => {
+    var email = e.target.value;
+
+    if (validator.isEmail(email)) {
+      setEmail(email)
+      setMessage("valid Email !!");
+    } else {
+      setMessage("Please, enter valid Email !!");
+    }
+  }
   const signup = () => {
     // check if user has really entered any value
     if (name.length === 0) {
@@ -89,6 +114,7 @@ const Signup = () => {
               type="text"
               required=""
             />
+            
           </div>
 
           <div className="mb-3">
@@ -106,25 +132,30 @@ const Signup = () => {
           <div className="mb-3">
             <label>Email</label>
             <input
-              onChange={(event) => {
-                setEmail(event.target.value);
-              }}
+              onChange={(e) => validateEmail(e)}
               className="form-control"
               type="email"
               required=""
+             
             />
+            <small style={{color:"green"}}>{message}</small>
           </div>
 
           <div className="mb-3">
             <label>Password</label>
             <input
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
+             onChange={(e) => validate(e.target.value)}
+
               className="form-control"
               type="password"
               required=""
+              placeholder="Min 8 charactors"
             />
+            {errorMessage === '' ? null :
+        <small style={{
+          
+          color: 'green',
+        }}>{errorMessage}</small>}
           </div>
 
           <div className="mb-3">
@@ -171,7 +202,7 @@ const Signup = () => {
 const styles = {
   container: {
     width: 400,
-    height: 620,
+    height: 650,
     padding: 20,
     position: "relative",
     top: 0,

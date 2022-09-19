@@ -4,11 +4,10 @@ import axios from "axios";
 import config from "../../../config";
 import { useState, useEffect } from "react";
 
-const UpdateProfile = () => {
+const UpdateRestaurant = () => {
 
-  const id = sessionStorage.getItem("customerId");
+  const id = sessionStorage.getItem("restaurentId");
 
- 
   const [user, SetUser] = useState({});
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -23,7 +22,7 @@ const UpdateProfile = () => {
 
   const getUserDetails = () => {
    
-   
+    
 
     axios.get(`${config.serverURL}/user/getDetails/${id}`).then((Response) => {
       console.log(Response.data.data);
@@ -58,7 +57,7 @@ const UpdateProfile = () => {
             toast.success("update Successfully");
 
             // navigate to the signin page
-            navigate("/CustomerHomePage");
+            navigate("/restaurantHome");
           } else {
             toast.error(result["error"]);
           }
@@ -164,4 +163,4 @@ const styles = {
     marginTop: 10,
   },
 };
-export default UpdateProfile;
+export default UpdateRestaurant;

@@ -44,7 +44,7 @@ const DeliveryBoyHome = () => {
 
         if (result["status"] === "success") {
           console.log(result);
-          navigate("/deliveryBoyHome");
+          navigate("/acceptedOrder");
 
           toast.success("Order Accepted");
           // window.location.reload();

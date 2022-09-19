@@ -62,7 +62,7 @@ const RestoNav = () => {
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li>
-                  <a class="dropdown-item" href="/UpdateProfile">
+                  <a class="dropdown-item" href="/updateRestaurant">
                     Update Profile
                   </a>
                 </li>

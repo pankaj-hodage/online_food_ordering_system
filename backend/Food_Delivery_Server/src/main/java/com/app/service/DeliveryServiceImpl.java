@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dao.FoodOrderRepository;
+import com.app.dao.PaymentRepository;
 import com.app.dao.UserRepository;
 import com.app.entities.FoodOrder;
 import com.app.entities.OrderStatus;
+import com.app.entities.Payment;
+import com.app.entities.PaymentStatus;
 import com.app.entities.User;
 
 @Service
@@ -23,7 +26,8 @@ public class DeliveryServiceImpl implements IDeliveryService
 	
 	@Autowired
 	private UserRepository userRepo;
-	
+	@Autowired
+	private PaymentRepository paymentRepo;
 	@Override
 	public List<FoodOrder> allPlacedOrders() {
 	
@@ -45,8 +49,11 @@ public class DeliveryServiceImpl implements IDeliveryService
 		FoodOrder order=orderRepo.findById(orderId).get();
 		order.setStatus(OrderStatus.valueOf(status.toUpperCase()));
 		order.setStatusUpdateDate(LocalDateTime.now());
-		if (status.equals("DELIVERED")) 
+		if (status.equals("DELIVERED")) {
 			order.setDeliveredTime(LocalDateTime.now());
+		Payment payment = paymentRepo.findPaymentByOrderId(orderId);
+		payment.setPaymentStatus(PaymentStatus.COMPLETED);
+		}
 		return orderRepo.save(order);
 	}
 	

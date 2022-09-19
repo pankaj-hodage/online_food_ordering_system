@@ -41,7 +41,7 @@ const CustHomeNv = () => {
               </a>
             </li>
 
-            <div className="btn-group" class="mybtn-right">
+            {/* <div className="btn-group" class="mybtn-right">
               <button
                 type="button"
                 class="btn btn-dark dropdown-toggle"
@@ -63,7 +63,7 @@ const CustHomeNv = () => {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
 
    <div className="btn-group" class="mybtn-right">

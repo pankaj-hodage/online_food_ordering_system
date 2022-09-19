@@ -80,7 +80,7 @@ const CustomerHome = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid" >
       <CustHomeNv />
       <div className="container-fluid">
         {category.map((cat) => {
@@ -132,14 +132,14 @@ const CustomerHome = () => {
               </div>
 
 
-              <div className="col">
+              {/* <div className="col">
 
               
 
                 <label className="form-label" for="form3Example97">
                   Qty
                 </label>
-                </div>
+                </div> */}
               <div className="row">
               
                 <div className="col">
@@ -147,6 +147,7 @@ const CustomerHome = () => {
                   type="text"
                   id="form3Example97"
                   className="form-control form-control-sm"
+                  placeholder="Enter Qty"
                   onChange={(e) => {
                     setQuantity(e.target.value);
                   }}

@@ -30,6 +30,7 @@ import MyOrders from "./Pages/Customer/MyOrders";
 import Category from "./Pages/Admin/Category";
 import AllOrders from "./Pages/Restaurant/allOrders";
 import AllAcceptedOrders from "./Pages/Restaurant/allAcceptedOrders";
+import UpdateRestaurant from "./Pages/User/UpdateProfile/updateRestaurant";
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
           <Route exact path="/Category" element={<Category />} />
           <Route exact path="/allOrders" element={<AllOrders />} />
           <Route exact path="/allAcceptedOrders" element={<AllAcceptedOrders />} />
+          <Route exact path="/updateRestaurant" element={<UpdateRestaurant />} />
     </Routes>
 
 
