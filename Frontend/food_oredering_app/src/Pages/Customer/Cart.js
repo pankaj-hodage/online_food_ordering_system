@@ -8,6 +8,7 @@ import CustHomeNv from "./../../components/CustHomeNv";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
+  let total = 0;
   const userid = sessionStorage.getItem("customerId");
 
   useEffect(() => {
@@ -53,12 +54,13 @@ const Cart = () => {
                 <th scope="col">Menu Name</th>
                 <th scope="col">Qty</th>
                 <th scope="col">Price</th>
-                <th scope="col">Total Price</th>
+                <th scope="col">Total</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               {cart.map((cart) => {
+                total = total + cart.selectedMenu.price * cart.quantity;
                 return (
                   <tr>
                     {/* <td>{cart.selectedMenu.menutype.menuType}</td> */}
@@ -81,6 +83,10 @@ const Cart = () => {
               })}
             </tbody>
           </table>
+          <div style={{ marginLeft: 130 }}>
+            <br />
+            <h6>Order total : {total} + Rs.50 (delivery charge) </h6>
+          </div>
         </div>
         <Link to="/SelectAddress">
           <button

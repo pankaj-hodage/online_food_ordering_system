@@ -1,0 +1,11 @@
+[Unit]
+Description=myapp
+After=syslog.target
+
+[Service]
+User=ubuntu
+ExecStart=/home/ubuntu/Food_Delivery-0.0.1-SNAPSHOT.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

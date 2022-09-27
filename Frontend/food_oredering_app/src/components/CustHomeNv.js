@@ -1,8 +1,6 @@
 import "./navbar.css";
 
-
-import './navbar.css'
-
+import "./navbar.css";
 
 const CustHomeNv = () => {
   return (
@@ -13,7 +11,6 @@ const CustHomeNv = () => {
         </a>
         <div id="navbarSupportedContent" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
-           
             <li class="nav-item">
               <a href="/Cart" class="nav-link">
                 <i class="fas fa-shopping-cart"></i>
@@ -36,7 +33,7 @@ const CustHomeNv = () => {
             </li>
 
             <li class="nav-item">
-              <a href="/Contact" class="nav-link">
+              <a href="/contactUs" class="nav-link">
                 Contact Us
               </a>
             </li>
@@ -65,25 +62,29 @@ const CustHomeNv = () => {
               </ul>
             </div> */}
 
-
-   <div className="btn-group" class="mybtn-right">
-<button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-<i class="fas fa-user"></i>
-      
-      &nbsp; Welcome 
-     
-</button>
-<ul class="dropdown-menu dropdown-menu-end">
-
-<li><a class="dropdown-item" href="/updateProfile">Update Profile</a></li>
-<li><a class="dropdown-item" href="/signin">Log Out</a></li>
-
-
-</ul>
-</div>
-
-
-    
+            <div className="btn-group" class="mybtn-right">
+              <button
+                type="button"
+                class="btn btn-dark dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user"></i>
+                &nbsp; Welcome
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" href="/updateProfile">
+                    Update Profile
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/signin">
+                    Log Out
+                  </a>
+                </li>
+              </ul>
+            </div>
           </ul>
         </div>
       </div>
