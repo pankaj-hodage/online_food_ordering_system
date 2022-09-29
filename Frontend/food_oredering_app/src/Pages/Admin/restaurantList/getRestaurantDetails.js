@@ -32,7 +32,7 @@ const GetRestaurantDetails = () => {
     <div className="container-fluid">
       <NavbarAdmin></NavbarAdmin>
       <div style={{ textAlign: "center" }}>
-        <h4>restaurant reviews</h4>
+        <h4>Restaurant reviews</h4>
       </div>
       <table
         className="table table-responsive table-striped table-hover table-bordered"
