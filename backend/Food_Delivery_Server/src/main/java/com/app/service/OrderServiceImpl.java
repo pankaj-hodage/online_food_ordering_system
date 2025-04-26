@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.criteria.Order;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,20 +12,17 @@ import com.app.dao.AddressRepository;
 import com.app.dao.CartRepository;
 import com.app.dao.FoodOrderRepository;
 import com.app.dao.OrderDetailsRepository;
-
 import com.app.dao.PaymentRepository;
 import com.app.dao.UserRepository;
 import com.app.dto.FoodOrderDto;
 import com.app.entities.Address;
 import com.app.entities.Cart;
 import com.app.entities.FoodOrder;
-import com.app.entities.Menu;
 import com.app.entities.OrderDetails;
 import com.app.entities.OrderStatus;
 import com.app.entities.Payment;
 import com.app.entities.PaymentModes;
 import com.app.entities.PaymentStatus;
-
 import com.app.entities.User;
 
 @Service
@@ -55,7 +50,7 @@ public class OrderServiceImpl implements IOrderService {
 	public String placeOrderForUser(int userId, int addrId, String paymentMode) {
 		// get all cart items for given user
 		List<Cart> cartItems = cartRepo.findAllItemsByUser(userId);
-		
+
 		double total = 0.0;
 		int deliveryCharges = 50;
 		for (Cart item : cartItems) {
@@ -84,7 +79,7 @@ public class OrderServiceImpl implements IOrderService {
 		});
 		cartRepo.deleteAll(cartItems);
 		return "Order Placed Successfully!";
-		
+
 	}
 
 	@Override
@@ -100,7 +95,6 @@ public class OrderServiceImpl implements IOrderService {
 		return response;
 	}
 
-	
 	@Override
 	public List<FoodOrderDto> getAllPendingOrders() {
 		List<FoodOrder> orders = foodOrderRepo.findAll();
@@ -119,11 +113,6 @@ public class OrderServiceImpl implements IOrderService {
 		}
 		return response;
 	}
-
-
-
-
-
 
 	@Override
 	public void updateOrderStatus(int orderId, String status, int deliveryId) {
@@ -166,7 +155,5 @@ public class OrderServiceImpl implements IOrderService {
 		}
 		return response;
 	}
-	
-	
 
 }

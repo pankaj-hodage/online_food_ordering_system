@@ -1,16 +1,14 @@
 package com.app.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +18,7 @@ import lombok.ToString;
 @Table(name = "order_details")
 @Getter
 @Setter
-@ToString(exclude = {"currentOrder","selectedProduct"})
+@ToString(exclude = { "currentOrder", "selectedProduct" })
 @NoArgsConstructor
 
 public class OrderDetails {
@@ -47,7 +45,5 @@ public class OrderDetails {
 		this.currentOrder = currentOrder;
 		this.selectedProduct = selectedProduct;
 	}
-	
-	
 
 }

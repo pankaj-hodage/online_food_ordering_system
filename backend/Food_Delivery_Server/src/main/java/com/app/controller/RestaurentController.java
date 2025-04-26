@@ -17,45 +17,43 @@ import com.app.service.RestaurentServiceImpl;
 @RestController
 @RequestMapping("/resto")
 @CrossOrigin
-public class RestaurentController 
-{	
+public class RestaurentController {
 	@Autowired
 	RestaurentServiceImpl restoService;
-	
+
 	@Autowired
 	DeliveryServiceImpl deliveryService;
-	
+
 	@GetMapping("/allOrders/{restId}")
-	public ResponseEntity<?> getAllOrders(@PathVariable int restId)
-	{
-		return new ResponseEntity<>(new ResponseDto<>("success",restoService.getAllPlacedOrders(restId)),HttpStatus.OK);
-				//ResponseEntity.ok(restoService.getAllPlacedOrders(restId));
+	public ResponseEntity<?> getAllOrders(@PathVariable int restId) {
+		return new ResponseEntity<>(new ResponseDto<>("success", restoService.getAllPlacedOrders(restId)),
+				HttpStatus.OK);
+		// ResponseEntity.ok(restoService.getAllPlacedOrders(restId));
 	}
-	
+
 	@GetMapping("/allAcceptedOrders/{restId}")
-	public ResponseEntity<?> getAllAcceptedOrders(@PathVariable int restId)
-	{
-		return new ResponseEntity<>(new ResponseDto<>("success",restoService.getAllAcceptedOrders(restId)),HttpStatus.OK);
-				//ResponseEntity.ok(restoService.getAllPlacedOrders(restId));
+	public ResponseEntity<?> getAllAcceptedOrders(@PathVariable int restId) {
+		return new ResponseEntity<>(new ResponseDto<>("success", restoService.getAllAcceptedOrders(restId)),
+				HttpStatus.OK);
+		// ResponseEntity.ok(restoService.getAllPlacedOrders(restId));
 	}
-	
+
 	@PutMapping("/updateStatus/{orderId}/{status}")
-	public ResponseEntity<?> updateStatus(@PathVariable String status , @PathVariable int orderId){
-		
-		return new ResponseEntity<>(new ResponseDto<>("success",deliveryService.updateStatus(orderId, status)),HttpStatus.OK);
+	public ResponseEntity<?> updateStatus(@PathVariable String status, @PathVariable int orderId) {
+
+		return new ResponseEntity<>(new ResponseDto<>("success", deliveryService.updateStatus(orderId, status)),
+				HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/allRatings/{restId}")
-	public ResponseEntity<?> getAllRating(@PathVariable int restId)
-	{
-		return ResponseEntity.ok().body(new ResponseDto<>("Success" ,restoService.getAllRatings(restId) ));
-				//ResponseEntity.ok(restoService.getAllRatings(restId));
+	public ResponseEntity<?> getAllRating(@PathVariable int restId) {
+		return ResponseEntity.ok().body(new ResponseDto<>("Success", restoService.getAllRatings(restId)));
+		// ResponseEntity.ok(restoService.getAllRatings(restId));
 	}
-	
+
 	@GetMapping("/allMenus/{restId}")
-	public ResponseEntity<?> getAllMenusRating(@PathVariable int restId)
-	{
+	public ResponseEntity<?> getAllMenusRating(@PathVariable int restId) {
 		return ResponseEntity.ok(restoService.getAllMenus(restId));
 	}
-	
+
 }
